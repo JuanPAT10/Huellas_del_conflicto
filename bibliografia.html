@@ -1,0 +1,1309 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bibliografía del proyecto — Huellas del conflicto</title>
+<style>
+*,::before,::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+ --azul:#0064b0; --azul-hondo:#004c85; --azul-noche:#00365e;
+ --azul-claro:#e3f0fa; --azul-borde:#a8cce8; --cian:#00b0f0;
+ --tinta:#1a1a18; --gris:#5f5e5a; --gris-claro:#8a8a85;
+ --fondo:#f4f6f8; --papel:#fff; --borde:#dde3e9; --suave:#f7f9fb;
+ --sans:system-ui,-apple-system,"Segoe UI",sans-serif;
+}
+body{font-family:Georgia,"Times New Roman",serif;background:var(--fondo);
+ color:var(--tinta);line-height:1.75}
+
+/* ── encabezado ─────────────────────────────────────────────── */
+.hero{background:linear-gradient(170deg,var(--azul) 0%,var(--azul-hondo) 70%,var(--azul-noche) 100%);
+ padding:52px 48px 38px;text-align:center;color:#fff}
+.hero-eyebrow{font-family:var(--sans);font-size:11px;letter-spacing:.22em;
+ text-transform:uppercase;color:#a9d2f0;margin-bottom:14px}
+.hero-title{font-size:32px;font-weight:400;margin-bottom:10px;letter-spacing:.01em}
+.hero-sub{font-size:14px;font-style:italic;color:#cfe4f5;max-width:780px;
+ margin:0 auto 22px}
+.hero-stats{display:flex;justify-content:center;gap:34px;flex-wrap:wrap}
+.stat-n{font-family:var(--sans);font-size:28px;line-height:1}
+.stat-l{font-family:var(--sans);font-size:10px;color:#9cc6e8;text-transform:uppercase;
+ letter-spacing:.09em;margin-top:5px}
+
+/* ── barra pegajosa ─────────────────────────────────────────── */
+.barra{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.97);
+ border-bottom:1px solid var(--borde);box-shadow:0 1px 6px rgba(0,60,110,.06);
+ backdrop-filter:saturate(1.4) blur(6px)}
+.barra-fila{display:flex;align-items:center;gap:10px;padding:9px 20px;
+ max-width:1180px;margin:0 auto;flex-wrap:wrap}
+.chips{display:flex;gap:4px;overflow-x:auto;scrollbar-width:none;flex:1 1 320px}
+.chips::-webkit-scrollbar{display:none}
+.chip{font-family:var(--sans);font-size:11.5px;font-weight:500;padding:5px 10px;
+ border:1px solid transparent;border-radius:20px;background:transparent;
+ color:var(--gris);cursor:pointer;white-space:nowrap;transition:all .15s}
+.chip:hover{background:var(--azul-claro);color:var(--azul-hondo)}
+.chip.on{background:var(--azul);color:#fff}
+.buscar{font-family:var(--sans);font-size:13px;padding:7px 12px;border:1px solid var(--borde);
+ border-radius:20px;width:230px;outline:none;background:var(--suave);color:var(--tinta)}
+.buscar:focus{border-color:var(--azul);background:#fff;box-shadow:0 0 0 3px var(--azul-claro)}
+.btn{font-family:var(--sans);font-size:12px;padding:6px 12px;border:1px solid var(--borde);
+ border-radius:20px;background:#fff;color:var(--gris);cursor:pointer;transition:all .15s;
+ white-space:nowrap}
+.btn:hover{border-color:var(--azul);color:var(--azul-hondo)}
+.btn.on{background:var(--azul);border-color:var(--azul);color:#fff}
+.cuenta{font-family:var(--sans);font-size:11.5px;color:var(--gris-claro);white-space:nowrap}
+
+/* ── índice ─────────────────────────────────────────────────── */
+.envoltorio{max-width:1180px;margin:0 auto;padding:0 20px}
+.indice{display:grid;grid-template-columns:repeat(auto-fill,minmax(248px,1fr));
+ gap:10px;margin:30px 0 38px}
+.tarjeta{display:block;background:#fff;border:1px solid var(--borde);border-radius:8px;
+ padding:14px 16px;text-decoration:none;color:inherit;transition:all .18s;
+ border-left:3px solid var(--azul-borde)}
+.tarjeta:hover{border-left-color:var(--azul);transform:translateY(-2px);
+ box-shadow:0 4px 14px rgba(0,80,150,.10)}
+.tarjeta-num{font-family:var(--sans);font-size:10px;letter-spacing:.14em;
+ text-transform:uppercase;color:var(--azul);margin-bottom:5px}
+.tarjeta-tit{font-size:14.5px;line-height:1.45}
+.tarjeta-n{font-family:var(--sans);font-size:11px;color:var(--gris-claro);margin-top:7px}
+
+/* ── secciones ──────────────────────────────────────────────── */
+.section{margin-bottom:26px;scroll-margin-top:62px}
+.section-header{width:100%;text-align:left;background:var(--azul);color:#fff;
+ padding:13px 20px;border:none;border-radius:6px;font-family:inherit;font-size:16px;
+ cursor:pointer;display:flex;align-items:center;gap:12px;transition:background .15s}
+.section-header:hover{background:var(--azul-hondo)}
+.section-header .flecha{font-family:var(--sans);font-size:13px;transition:transform .2s;
+ opacity:.85}
+.section.plegada .section-header .flecha{transform:rotate(-90deg)}
+.section-header .n{margin-left:auto;font-family:var(--sans);font-size:11.5px;opacity:.8}
+.section-sub{font-family:var(--sans);font-size:11px;color:var(--gris);
+ text-transform:uppercase;letter-spacing:.07em;margin:9px 0 18px;padding-left:4px}
+.section.plegada .cuerpo,.section.plegada .section-sub{display:none}
+.group{margin-bottom:24px}
+.group-title{font-family:var(--sans);font-size:11px;text-transform:uppercase;
+ letter-spacing:.1em;color:var(--azul-hondo);border-bottom:1px solid var(--borde);
+ padding-bottom:5px;margin-bottom:11px}
+
+/* ── entradas ───────────────────────────────────────────────── */
+.entry{position:relative;background:var(--papel);border:1px solid var(--borde);
+ border-radius:6px;padding:15px 18px;margin-bottom:9px;transition:border-color .15s}
+.entry:hover{border-color:var(--azul-borde)}
+.entry-meta{font-family:var(--sans);font-size:10px;margin-bottom:8px;display:flex;
+ gap:6px;align-items:center;flex-wrap:wrap;padding-right:70px}
+.tag{display:inline-block;font-size:10px;padding:2px 9px;border-radius:20px;
+ background:var(--azul-claro);color:var(--azul-noche);border:1px solid var(--azul-borde)}
+.tag-esen{background:var(--azul);color:#fff;border-color:var(--azul)}
+.tag-nueva{background:#e0f5fe;color:#06577a;border-color:#8fd6f5}
+.apa{font-size:13.5px;line-height:1.85;padding-left:2em;text-indent:-2em}
+.apa a{color:var(--azul-hondo);font-size:12px;word-break:break-all}
+.note{font-size:12px;color:#4a4a46;font-style:italic;border-top:1px solid #eef1f4;
+ margin-top:10px;padding-top:8px;line-height:1.65}
+.note strong{font-style:normal;color:var(--tinta)}
+.note code{font-family:ui-monospace,Menlo,Consolas,monospace;font-style:normal;
+ font-size:11.5px;background:var(--suave);padding:1px 5px;border-radius:3px}
+.copiar{position:absolute;top:11px;right:12px;font-family:var(--sans);font-size:10.5px;
+ padding:3px 9px;border:1px solid var(--borde);border-radius:14px;background:#fff;
+ color:var(--gris-claro);cursor:pointer;opacity:0;transition:all .15s}
+.entry:hover .copiar{opacity:1}
+.copiar:hover{border-color:var(--azul);color:var(--azul)}
+.copiar.hecho{background:var(--azul);border-color:var(--azul);color:#fff;opacity:1}
+.oculto{display:none !important}
+.vacio{font-family:var(--sans);font-size:13px;color:var(--gris-claro);
+ text-align:center;padding:40px 0}
+
+/* ── pie ────────────────────────────────────────────────────── */
+.footer{background:var(--azul-noche);color:#9cc6e8;text-align:center;
+ padding:28px 48px;font-size:12px;margin-top:44px;line-height:1.8}
+.footer strong{color:#fff;font-weight:400}
+
+@media print{
+ body{background:#fff}
+ .barra,.copiar,.indice{display:none}
+ .section.plegada .cuerpo,.section.plegada .section-sub{display:block !important}
+ .section-header{border-radius:0}
+ .entry{break-inside:avoid;border-color:#ccc}
+ .hero,.section-header,.footer{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+}
+@media(max-width:700px){
+ .hero{padding:32px 18px 24px}
+ .buscar{width:100%}
+ .entry-meta{padding-right:0}
+ .copiar{position:static;opacity:1;margin-top:8px}
+}
+</style>
+</head>
+<body>
+<header class="hero">
+  <div class="hero-eyebrow">UNICAFAM · Ciencia de Datos · 2026-II</div>
+  <h1 class="hero-title">Bibliografía del proyecto — APA 7.ª edición</h1>
+  <p class="hero-sub"><em>Huellas del conflicto: explicar, pronosticar y distinguir en el Registro Único de Víctimas. Bibliografía unificada de las tres entregas: Regresiones lineales, Analítica Predictiva y Machine Learning</em></p>
+  <div class="hero-stats">
+    <div><div class="stat-n">131</div><div class="stat-l">referencias</div></div>
+    <div><div class="stat-n">11</div><div class="stat-l">secciones</div></div>
+    <div><div class="stat-n">62</div><div class="stat-l">incorporadas en 2026-II</div></div>
+    <div><div class="stat-n">3</div><div class="stat-l">entregas</div></div>
+  </div>
+</header>
+<nav class="barra">
+  <div class="barra-fila">
+    <div class="chips" role="tablist">
+      <button class="chip" data-ir="sec-lenguaje" title="Filosofía del lenguaje y pragmatismo">I</button>
+      <button class="chip" data-ir="sec-politica" title="Filosofía política y social">II</button>
+      <button class="chip" data-ir="sec-registro" title="Clasificación, cuantificación y doble hermenéutica">III</button>
+      <button class="chip" data-ir="sec-colombia" title="Documentos institucionales y marco jurídico — Colombia">IV</button>
+      <button class="chip" data-ir="sec-datos-fuente" title="Fuentes de datos del proyecto — cortes de 2026">V</button>
+      <button class="chip" data-ir="sec-series" title="Series de tiempo, quiebres estructurales e inferencia causal">VI</button>
+      <button class="chip" data-ir="sec-ml" title="Aprendizaje automático, pronóstico y detección">VII</button>
+      <button class="chip" data-ir="sec-herramientas" title="Herramientas de cómputo y reproducibilidad">VIII</button>
+      <button class="chip" data-ir="sec-estadistica" title="Estadística aplicada y pruebas clásicas">IX</button>
+      <button class="chip" data-ir="sec-inter" title="Organismos internacionales y contexto comparado">X</button>
+      <button class="chip" data-ir="sec-esencial" title="Metodología de la investigación y filosofía de la ciencia">XI</button>
+    </div>
+    <input id="buscar" class="buscar" type="search" placeholder="Filtrar por autor, obra o tema…" aria-label="Filtrar referencias">
+    <button id="f-esen" class="btn" aria-pressed="false">Esenciales</button>
+    <button id="f-nueva" class="btn" aria-pressed="false">2026-II</button>
+    <button id="plegar" class="btn">Plegar todo</button>
+    <button id="copiar-lista" class="btn" title="Copia las referencias visibles en una sola lista alfabética, lista para pegar en el documento">Copiar lista</button>
+    <span id="cuenta" class="cuenta"></span>
+  </div>
+</nav>
+<div class="envoltorio">
+<div class="indice">
+  <a class="tarjeta" href="#sec-lenguaje">
+    <div class="tarjeta-num">Sección I</div>
+    <div class="tarjeta-tit">Filosofía del lenguaje y pragmatismo</div>
+    <div class="tarjeta-n">18 ref.</div>
+  </a>
+  <a class="tarjeta" href="#sec-politica">
+    <div class="tarjeta-num">Sección II</div>
+    <div class="tarjeta-tit">Filosofía política y social</div>
+    <div class="tarjeta-n">14 ref.</div>
+  </a>
+  <a class="tarjeta" href="#sec-registro">
+    <div class="tarjeta-num">Sección III</div>
+    <div class="tarjeta-tit">Clasificación, cuantificación y doble hermenéutica</div>
+    <div class="tarjeta-n">9 ref.</div>
+  </a>
+  <a class="tarjeta" href="#sec-colombia">
+    <div class="tarjeta-num">Sección IV</div>
+    <div class="tarjeta-tit">Documentos institucionales y marco jurídico — Colombia</div>
+    <div class="tarjeta-n">16 ref.</div>
+  </a>
+  <a class="tarjeta" href="#sec-datos-fuente">
+    <div class="tarjeta-num">Sección V</div>
+    <div class="tarjeta-tit">Fuentes de datos del proyecto — cortes de 2026</div>
+    <div class="tarjeta-n">7 ref.</div>
+  </a>
+  <a class="tarjeta" href="#sec-series">
+    <div class="tarjeta-num">Sección VI</div>
+    <div class="tarjeta-tit">Series de tiempo, quiebres estructurales e inferencia causal</div>
+    <div class="tarjeta-n">13 ref.</div>
+  </a>
+  <a class="tarjeta" href="#sec-ml">
+    <div class="tarjeta-num">Sección VII</div>
+    <div class="tarjeta-tit">Aprendizaje automático, pronóstico y detección</div>
+    <div class="tarjeta-n">17 ref.</div>
+  </a>
+  <a class="tarjeta" href="#sec-herramientas">
+    <div class="tarjeta-num">Sección VIII</div>
+    <div class="tarjeta-tit">Herramientas de cómputo y reproducibilidad</div>
+    <div class="tarjeta-n">15 ref.</div>
+  </a>
+  <a class="tarjeta" href="#sec-estadistica">
+    <div class="tarjeta-num">Sección IX</div>
+    <div class="tarjeta-tit">Estadística aplicada y pruebas clásicas</div>
+    <div class="tarjeta-n">9 ref.</div>
+  </a>
+  <a class="tarjeta" href="#sec-inter">
+    <div class="tarjeta-num">Sección X</div>
+    <div class="tarjeta-tit">Organismos internacionales y contexto comparado</div>
+    <div class="tarjeta-n">6 ref.</div>
+  </a>
+  <a class="tarjeta" href="#sec-esencial">
+    <div class="tarjeta-num">Sección XI</div>
+    <div class="tarjeta-tit">Metodología de la investigación y filosofía de la ciencia</div>
+    <div class="tarjeta-n">7 ref.</div>
+  </a>
+</div>
+<p id="sin-resultados" class="vacio oculto">Ninguna referencia coincide con el filtro.</p>
+<section class="section" id="sec-lenguaje">
+  <button class="section-header" aria-expanded="true"><span class="flecha">&#9660;</span><span>I. Filosofía del lenguaje y pragmatismo</span><span class="n">18 referencias</span></button>
+  <div class="section-sub">Wittgenstein · Frege · García Carpintero · Brandom · Davidson · Austin · Searle · Peirce</div>
+  <div class="cuerpo">
+  <div class="group">
+    <div class="group-title">Ludwig Wittgenstein (1889–1951)</div>
+    <article class="entry" data-esen="1" data-nueva="0" data-apa="Wittgenstein, L. (1999). Investigaciones filosóficas (A. García Suárez y U. Moulines, Trads.). Crítica. (Obra original publicada en 1953)" data-busca="wittgenstein, l. (1999). investigaciones filosóficas (a. garcía suárez y u. moulines, trads.). crítica. (obra original publicada en 1953) edición indicada: editorial crítica. traducción canónica al español de garcía suárez y moulines. para el proyecto: §§1–130 (juegos de lenguaje y significado como uso), §§185–242 (seguir una regla y normatividad), §§243–315 (argumento del lenguaje privado). el concepto de «forma de vida» fundamenta el análisis de por qué las categorías del ruv son prácticas sociales instituidas, no descripciones neutrales. wittgenstein">
+      <button class="copiar" title="Copiar esta referencia">copiar</button>
+      <div class="entry-meta"><span class="tag">Wittgenstein</span><span class="tag tag-esen">Esencial</span></div>
+      <p class="apa">Wittgenstein, L. (1999). <em>Investigaciones filosóficas</em> (A. García Suárez y U. Moulines, Trads.). Crítica. (Obra original publicada en 1953)</p>
+      <p class="note"><strong>Edición indicada: Editorial Crítica.</strong> Traducción canónica al español de García Suárez y Moulines. Para el proyecto: §§1–130 (juegos de lenguaje y significado como uso), §§185–242 (seguir una regla y normatividad), §§243–315 (argumento del lenguaje privado). El concepto de «forma de vida» fundamenta el análisis de por qué las categorías del RUV son prácticas sociales instituidas, no descripciones neutrales.</p>
+    </article>
+    <article class="entry" data-esen="1" data-nueva="0" data-apa="Wittgenstein, L. (2003). Tractatus logico-philosophicus (L. M. Valdés Villanueva, Trad.; ed. bilingüe alemán-español). Alianza Editorial. (Obra original publicada en 1921)" data-busca="wittgenstein, l. (2003). tractatus logico-philosophicus (l. m. valdés villanueva, trad.; ed. bilingüe alemán-español). alianza editorial. (obra original publicada en 1921) edición bilingüe indicada: alianza editorial. proposiciones clave: 4.11–4.116 (los límites del lenguaje científico), 5.6 («los límites de mi lenguaje significan los límites de mi mundo»), 6.53–7. la proposición 7 es el punto de partida de la hipótesis i: lo que el análisis estadístico no puede decir del sufrimiento. wittgenstein">
+      <button class="copiar" title="Copiar esta referencia">copiar</button>
+      <div class="entry-meta"><span class="tag">Wittgenstein</span><span class="tag tag-esen">Esencial</span></div>
+      <p class="apa">Wittgenstein, L. (2003). <em>Tractatus logico-philosophicus</em> (L. M. Valdés Villanueva, Trad.; ed. bilingüe alemán-español). Alianza Editorial. (Obra original publicada en 1921)</p>
+      <p class="note"><strong>Edición bilingüe indicada: Alianza Editorial.</strong> Proposiciones clave: 4.11–4.116 (los límites del lenguaje científico), 5.6 («Los límites de mi lenguaje significan los límites de mi mundo»), 6.53–7. La proposición 7 es el punto de partida de la Hipótesis I: lo que el análisis estadístico no puede decir del sufrimiento.</p>
+    </article>
+    <article class="entry" data-esen="0" data-nueva="0" data-apa="Wittgenstein, L. (1968). Los cuadernos azul y marrón (F. G. García Guillén, Trad.). Tecnos. (Obra original publicada en 1958)" data-busca="wittgenstein, l. (1968). los cuadernos azul y marrón (f. g. garcía guillén, trad.). tecnos. (obra original publicada en 1958) edición indicada: editorial tecnos. los cuadernos son el puente entre el tractatus y las investigaciones: muestran la transición desde la teoría pictórica hacia la teoría del uso. el cuaderno azul introduce la pregunta «¿qué es el significado de una palabra?» y la responde con el análisis de los usos, no de las esencias. wittgenstein">
+      <button class="copiar" title="Copiar esta referencia">copiar</button>
+      <div class="entry-meta"><span class="tag">Wittgenstein</span></div>
+      <p class="apa">Wittgenstein, L. (1968). <em>Los cuadernos azul y marrón</em> (F. G. García Guillén, Trad.). Tecnos. (Obra original publicada en 1958)</p>
+      <p class="note"><strong>Edición indicada: Editorial Tecnos.</strong> Los Cuadernos son el puente entre el Tractatus y las Investigaciones: muestran la transición desde la teoría pictórica hacia la teoría del uso. El Cuaderno Azul introduce la pregunta «¿qué es el significado de una palabra?» y la responde con el análisis de los usos, no de las esencias.</p>
+    </article>
+  </div>
+  <div class="group">
+    <div class="group-title">Manuel García Carpintero</div>
+    <article class="entry" data-esen="1" data-nueva="0" data-apa="García Carpintero, M. (1996). Las palabras, las ideas y las cosas: Una presentación de la filosofía del lenguaje. Ariel." data-busca="garcía carpintero, m. (1996). las palabras, las ideas y las cosas: una presentación de la filosofía del lenguaje. ariel. edición indicada: editorial ariel. el manual de referencia más completo y riguroso en español sobre filosofía del lenguaje analítica. presenta de forma sistemática las tradiciones de frege (sentido/referencia), russell (descripciones), el primer y segundo wittgenstein, austin (actos de habla), grice (implicaturas) y la semántica de mundos posibles. garcía carpintero">
+      <button class="copiar" title="Copiar esta referencia">copiar</button>
+      <div class="entry-meta"><span class="tag">García Carpintero</span><span class="tag tag-esen">Esencial</span></div>
+      <p class="apa">García Carpintero, M. (1996). <em>Las palabras, las ideas y las cosas: Una presentación de la filosofía del lenguaje</em>. Ariel.</p>
+      <p class="note"><strong>Edición indicada: Editorial Ariel.</strong> El manual de referencia más completo y riguroso en español sobre filosofía del lenguaje analítica. Presenta de forma sistemática las tradiciones de Frege (sentido/referencia), Russell (descripciones), el primer y segundo Wittgenstein, Austin (actos de habla), Grice (implicaturas) y la semántica de mundos posibles.</p>
+    </article>
+  </div>
+  <div class="group">
+    <div class="group-title">Gottlob Frege (1848–1925)</div>
+    <article class="entry" data-esen="1" data-nueva="0" data-apa="Frege, G. (1998). Ensayos de semántica y filosofía de la lógica (L. M. Valdés Villanueva, Ed. y Trad.). Tecnos." data-busca="frege, g. (1998). ensayos de semántica y filosofía de la lógica (l. m. valdés villanueva, ed. y trad.). tecnos. edición indicada: tecnos. compilación canónica que incluye «sobre sentido y referencia» (1892) —la distinción sinn/bedeutung aplicada al análisis de las cifras del ruv—, «el pensamiento» (1918), «función y concepto» y «sobre la justificación científica de una conceptografía». la distinción entre sentido y referencia es el eje conceptual de la hipótesis i. frege">
+      <button class="copiar" title="Copiar esta referencia">copiar</button>
+      <div class="entry-meta"><span class="tag">Frege</span><span class="tag tag-esen">Esencial</span></div>
+      <p class="apa">Frege, G. (1998). <em>Ensayos de semántica y filosofía de la lógica</em> (L. M. Valdés Villanueva, Ed. y Trad.). Tecnos.</p>
+      <p class="note"><strong>Edición indicada: Tecnos.</strong> Compilación canónica que incluye «Sobre sentido y referencia» (1892) —la distinción Sinn/Bedeutung aplicada al análisis de las cifras del RUV—, «El pensamiento» (1918), «Función y concepto» y «Sobre la justificación científica de una conceptografía». La distinción entre sentido y referencia es el eje conceptual de la Hipótesis I.</p>
+    </article>
+    <article class="entry" data-esen="0" data-nueva="0" data-apa="Kenny, A. (1997). Frege: Una introducción (A. Zirión Quijano, Trad.). Universidad Nacional Autónoma de México. (Obra original publicada en 1995)" data-busca="kenny, a. (1997). frege: una introducción (a. zirión quijano, trad.). universidad nacional autónoma de méxico. (obra original publicada en 1995) edición indicada: unam. la introducción más accesible y rigurosa al pensamiento de frege. explica la conceptografía, la distinción sentido/referencia, los contextos oblicuos y la herencia de frege en russell y wittgenstein. kenny · frege secundaria">
+      <button class="copiar" title="Copiar esta referencia">copiar</button>
+      <div class="entry-meta"><span class="tag">Kenny · Frege secundaria</span></div>
+      <p class="apa">Kenny, A. (1997). <em>Frege: Una introducción</em> (A. Zirión Quijano, Trad.). Universidad Nacional Autónoma de México. (Obra original publicada en 1995)</p>
+      <p class="note"><strong>Edición indicada: UNAM.</strong> La introducción más accesible y rigurosa al pensamiento de Frege. Explica la conceptografía, la distinción sentido/referencia, los contextos oblicuos y la herencia de Frege en Russell y Wittgenstein.</p>
+    </article>
+    <article class="entry" data-esen="0" data-nueva="0" data-apa="Villoro, L., y Rabossi, E. (Eds.). (1994). Pensamiento y lenguaje: Problemas en la atribución de actitudes proposicionales. Universidad Nacional Autónoma de México / Consejo Nacional de Ciencia y Tecnología." data-busca="villoro, l., y rabossi, e. (eds.). (1994). pensamiento y lenguaje: problemas en la atribución de actitudes proposicionales. universidad nacional autónoma de méxico / consejo nacional de ciencia y tecnología. edición indicada: unam. reúne trabajos sobre la atribución de actitudes proposicionales en el debate internalismo/externalismo semántico. conecta con la hipótesis ii: quién tiene la autoridad semántica para definir qué significa «víctima», «conflicto» o «paz» en colombia. actitudes proposicionales">
+      <button class="copiar" title="Copiar esta referencia">copiar</button>
+      <div class="entry-meta"><span class="tag">Actitudes proposicionales</span></div>
+      <p class="apa">Villoro, L., y Rabossi, E. (Eds.). (1994). <em>Pensamiento y lenguaje: Problemas en la atribución de actitudes proposicionales</em>. Universidad Nacional Autónoma de México / Consejo Nacional de Ciencia y Tecnología.</p>
+      <p class="note"><strong>Edición indicada: UNAM.</strong> Reúne trabajos sobre la atribución de actitudes proposicionales en el debate internalismo/externalismo semántico. Conecta con la Hipótesis II: quién tiene la autoridad semántica para definir qué significa «víctima», «conflicto» o «paz» en Colombia.</p>
+    </article>
+  </div>
+  <div class="group">
+    <div class="group-title">Robert Brandom (1950–)</div>
+    <article class="entry" data-esen="1" data-nueva="0" data-apa="Brandom, R. B. (2019). Making it explicit: Reasoning, representing, and discursive commitment (2.ª ed.). Harvard University Press. (Obra original publicada en 1994)" data-busca="brandom, r. b. (2019). making it explicit: reasoning, representing, and discursive commitment (2.ª ed.). harvard university press. (obra original publicada en 1994) 2.ª edición indicada: harvard university press. obra capital del inferencialismo: el significado de un término se determina por los compromisos inferenciales que activa en una práctica discursiva. aplicación al proyecto: clasificar a alguien como «víctima de desplazamiento forzado» activa una red de compromisos normativos sobre responsabilidad, derechos y obligaciones del estado. brandom">
+      <button class="copiar" title="Copiar esta referencia">copiar</button>
+      <div class="entry-meta"><span class="tag">Brandom</span><span class="tag tag-esen">Esencial</span></div>
+      <p class="apa">Brandom, R. B. (2019). <em>Making it explicit: Reasoning, representing, and discursive commitment</em> (2.ª ed.). Harvard University Press. (Obra original publicada en 1994)</p>
+      <p class="note"><strong>2.ª edición indicada: Harvard University Press.</strong> Obra capital del inferencialismo: el significado de un término se determina por los compromisos inferenciales que activa en una práctica discursiva. Aplicación al proyecto: clasificar a alguien como «víctima de desplazamiento forzado» activa una red de compromisos normativos sobre responsabilidad, derechos y obligaciones del Estado.</p>
+    </article>
+    <article class="entry" data-esen="1" data-nueva="0" data-apa="Brandom, R. B. (2002). La articulación de las razones: Una introducción al inferencialismo (E. Weikert, Trad.). Siglo XXI de España. (Obra original publicada en 2000)" data-busca="brandom, r. b. (2002). la articulación de las razones: una introducción al inferencialismo (e. weikert, trad.). siglo xxi de españa. (obra original publicada en 2000) versión condensada del programa filosófico de brandom en español. la noción de «hacer explícito lo implícito» —revelar los compromisos normativos ocultos en las categorías— es la tarea filosófica central del proyecto y el fundamento de la bitácora de decisiones metodológicas. brandom">
+      <button class="copiar" title="Copiar esta referencia">copiar</button>
+      <div class="entry-meta"><span class="tag">Brandom</span><span class="tag tag-esen">Esencial</span></div>
+      <p class="apa">Brandom, R. B. (2002). <em>La articulación de las razones: Una introducción al inferencialismo</em> (E. Weikert, Trad.). Siglo XXI de España. (Obra original publicada en 2000)</p>
+      <p class="note">Versión condensada del programa filosófico de Brandom en español. La noción de «hacer explícito lo implícito» —revelar los compromisos normativos ocultos en las categorías— es la tarea filosófica central del proyecto y el fundamento de la bitácora de decisiones metodológicas.</p>
+    </article>
+  </div>
+  <div class="group">
+    <div class="group-title">Donald Davidson (1917–2003)</div>
+    <article class="entry" data-esen="1" data-nueva="0" data-apa="Davidson, D. (1990). De la verdad y de la interpretación: Fundamentales contribuciones a la filosofía del lenguaje (G. Filippi, Trad.). Gedisa. (Obra original publicada en 1984)" data-busca="davidson, d. (1990). de la verdad y de la interpretación: fundamentales contribuciones a la filosofía del lenguaje (g. filippi, trad.). gedisa. (obra original publicada en 1984) edición en español: gedisa. contiene «verdad y significado» (1967), «interpretación radical» (1973) y «sobre la noción misma de esquema conceptual» (1974). la triangulación mundo–hablante–intérprete y el principio de caridad se aplican en la hipótesis i: qué tipo de caridad epistémica es apropiada cuando el hablante es el estado analizando datos de violencia en la que participó. davidson">
+      <button class="copiar" title="Copiar esta referencia">copiar</button>
+      <div class="entry-meta"><span class="tag">Davidson</span><span class="tag tag-esen">Esencial</span></div>
+      <p class="apa">Davidson, D. (1990). <em>De la verdad y de la interpretación: Fundamentales contribuciones a la filosofía del lenguaje</em> (G. Filippi, Trad.). Gedisa. (Obra original publicada en 1984)</p>
+      <p class="note"><strong>Edición en español: Gedisa.</strong> Contiene «Verdad y significado» (1967), «Interpretación radical» (1973) y «Sobre la noción misma de esquema conceptual» (1974). La triangulación mundo–hablante–intérprete y el principio de caridad se aplican en la Hipótesis I: qué tipo de caridad epistémica es apropiada cuando el hablante es el Estado analizando datos de violencia en la que participó.</p>
+    </article>
+    <article class="entry" data-esen="0" data-nueva="0" data-apa="Davidson, D. (2003). Subjetivo, intersubjetivo, objetivo (O. Fernández Prat, Trad.). Cátedra. (Obra original publicada en 2001)" data-busca="davidson, d. (2003). subjetivo, intersubjetivo, objetivo (o. fernández prat, trad.). cátedra. (obra original publicada en 2001) edición en español: cátedra. contiene «la externalización de la epistemología», «tres variedades de conocimiento» y «el problema de la objetividad». la objetividad del conocimiento requiere las tres dimensiones —subjetiva, intersubjetiva y objetiva— que los datos estadísticos por sí solos no proporcionan. davidson">
+      <button class="copiar" title="Copiar esta referencia">copiar</button>
+      <div class="entry-meta"><span class="tag">Davidson</span></div>
+      <p class="apa">Davidson, D. (2003). <em>Subjetivo, intersubjetivo, objetivo</em> (O. Fernández Prat, Trad.). Cátedra. (Obra original publicada en 2001)</p>
+      <p class="note"><strong>Edición en español: Cátedra.</strong> Contiene «La externalización de la epistemología», «Tres variedades de conocimiento» y «El problema de la objetividad». La objetividad del conocimiento requiere las tres dimensiones —subjetiva, intersubjetiva y objetiva— que los datos estadísticos por sí solos no proporcionan.</p>
+    </article>
+  </div>
+  <div class="group">
+    <div class="group-title">Actos de habla — Austin y Searle</div>
+    <article class="entry" data-esen="1" data-nueva="0" data-apa="Austin, J. L. (1998). Cómo hacer cosas con palabras: Palabras y acciones (G. R. Carrió y E. A. Rabossi, Trads.). Paidós. (Obra original publicada en 1962)" data-busca="austin, j. l. (1998). cómo hacer cosas con palabras: palabras y acciones (g. r. carrió y e. a. rabossi, trads.). paidós. (obra original publicada en 1962) edición en español: paidós. las doce conferencias sobre actos de habla (locutivos, ilocutivos, perlocutivos) son fundamentales para la hipótesis ii: el lenguaje del conflicto colombiano no describió sino que constituyó realidades políticas. llamar «terrorista» a alguien, declarar «bajas en combate» o firmar el «acuerdo de paz» son actos ilocutivos con consecuencias perlocutivas. austin">
+      <button class="copiar" title="Copiar esta referencia">copiar</button>
+      <div class="entry-meta"><span class="tag">Austin</span><span class="tag tag-esen">Esencial</span></div>
+      <p class="apa">Austin, J. L. (1998). <em>Cómo hacer cosas con palabras: Palabras y acciones</em> (G. R. Carrió y E. A. Rabossi, Trads.). Paidós. (Obra original publicada en 1962)</p>
+      <p class="note"><strong>Edición en español: Paidós.</strong> Las doce conferencias sobre actos de habla (locutivos, ilocutivos, perlocutivos) son fundamentales para la Hipótesis II: el lenguaje del conflicto colombiano no describió sino que <em>constituyó</em> realidades políticas. Llamar «terrorista» a alguien, declarar «bajas en combate» o firmar el «Acuerdo de Paz» son actos ilocutivos con consecuencias perlocutivas.</p>
+    </article>
+    <article class="entry" data-esen="0" data-nueva="0" data-apa="Searle, J. R. (1994). Actos de habla: Ensayo de filosofía del lenguaje (L. M. Valdés Villanueva, Trad.). Cátedra. (Obra original publicada en 1969)" data-busca="searle, j. r. (1994). actos de habla: ensayo de filosofía del lenguaje (l. m. valdés villanueva, trad.). cátedra. (obra original publicada en 1969) edición en español: cátedra. sistematiza la teoría de austin. los «hechos institucionales» —objetos que existen porque las instituciones los declaran como tales mediante reglas constitutivas— son el marco para analizar cómo el ruv y la ley 1448 crean realidades jurídicas mediante el lenguaje de la clasificación estadística. searle">
+      <button class="copiar" title="Copiar esta referencia">copiar</button>
+      <div class="entry-meta"><span class="tag">Searle</span></div>
+      <p class="apa">Searle, J. R. (1994). <em>Actos de habla: Ensayo de filosofía del lenguaje</em> (L. M. Valdés Villanueva, Trad.). Cátedra. (Obra original publicada en 1969)</p>
+      <p class="note"><strong>Edición en español: Cátedra.</strong> Sistematiza la teoría de Austin. Los «hechos institucionales» —objetos que existen porque las instituciones los declaran como tales mediante reglas constitutivas— son el marco para analizar cómo el RUV y la Ley 1448 crean realidades jurídicas mediante el lenguaje de la clasificación estadística.</p>
+    </article>
+    <article class="entry" data-esen="0" data-nueva="0" data-apa="Searle, J. R. (1997). La construcción de la realidad social (A. Doménech, Trad.). Paidós. (Obra original publicada en 1995)" data-busca="searle, j. r. (1997). la construcción de la realidad social (a. doménech, trad.). paidós. (obra original publicada en 1995) extiende la teoría de los hechos institucionales a la ontología social completa. la fórmula «x cuenta como y en el contexto c» es la que el proyecto usa para describir la operación del registro: un hecho ocurrido cuenta como hecho victimizante en el contexto de la ley 1448. searle">
+      <button class="copiar" title="Copiar esta referencia">copiar</button>
+      <div class="entry-meta"><span class="tag">Searle</span></div>
+      <p class="apa">Searle, J. R. (1997). <em>La construcción de la realidad social</em> (A. Doménech, Trad.). Paidós. (Obra original publicada en 1995)</p>
+      <p class="note">Extiende la teoría de los hechos institucionales a la ontología social completa. La fórmula «X cuenta como Y en el contexto C» es la que el proyecto usa para describir la operación del registro: un hecho ocurrido cuenta como hecho victimizante en el contexto de la Ley 1448.</p>
+    </article>
+  </div>
+  <div class="group">
+    <div class="group-title">Pragmatismo y otros autores</div>
+    <article class="entry" data-esen="0" data-nueva="0" data-apa="Peirce, C. S. (1988). El hombre, un signo: El pragmatismo de Peirce (J. Vericat, Trad.). Crítica." data-busca="peirce, c. s. (1988). el hombre, un signo: el pragmatismo de peirce (j. vericat, trad.). crítica. selección de textos centrales en español: la máxima pragmatista, el falibilismo, la comunidad ilimitada de investigadores y la semiótica triádica. el falibilismo de peirce es la actitud epistémica correcta ante los datos del ruv: los mejores datos disponibles, pero siempre provisionales y revisables. peirce">
+      <button class="copiar" title="Copiar esta referencia">copiar</button>
+      <div class="entry-meta"><span class="tag">Peirce</span></div>
+      <p class="apa">Peirce, C. S. (1988). <em>El hombre, un signo: El pragmatismo de Peirce</em> (J. Vericat, Trad.). Crítica.</p>
+      <p class="note">Selección de textos centrales en español: la máxima pragmatista, el falibilismo, la comunidad ilimitada de investigadores y la semiótica triádica. El falibilismo de Peirce es la actitud epistémica correcta ante los datos del RUV: los mejores datos disponibles, pero siempre provisionales y revisables.</p>
+    </article>
+    <article class="entry" data-esen="0" data-nueva="0" data-apa="Rorty, R. (1996). Contingencia, ironía y solidaridad (A. E. Sinnot, Trad.). Paidós. (Obra original publicada en 1989)" data-busca="rorty, r. (1996). contingencia, ironía y solidaridad (a. e. sinnot, trad.). paidós. (obra original publicada en 1989) el vocabulario con que describimos el sufrimiento es contingente y puede ser reemplazado por vocabularios más solidarios. la «ironía» —la conciencia de que el propio vocabulario es contingente— y la «solidaridad» son categorías aplicables al análisis del lenguaje del conflicto colombiano. rorty">
+      <button class="copiar" title="Copiar esta referencia">copiar</button>
+      <div class="entry-meta"><span class="tag">Rorty</span></div>
+      <p class="apa">Rorty, R. (1996). <em>Contingencia, ironía y solidaridad</em> (A. E. Sinnot, Trad.). Paidós. (Obra original publicada en 1989)</p>
+      <p class="note">El vocabulario con que describimos el sufrimiento es contingente y puede ser reemplazado por vocabularios más solidarios. La «ironía» —la conciencia de que el propio vocabulario es contingente— y la «solidaridad» son categorías aplicables al análisis del lenguaje del conflicto colombiano.</p>
+    </article>
+    <article class="entry" data-esen="0" data-nueva="0" data-apa="Valdés Villanueva, L. M. (Ed.). (2000). La búsqueda del significado: Lecturas de filosofía del lenguaje (3.ª ed.). Tecnos / Universidad de Murcia." data-busca="valdés villanueva, l. m. (ed.). (2000). la búsqueda del significado: lecturas de filosofía del lenguaje (3.ª ed.). tecnos / universidad de murcia. antología canónica de la filosofía del lenguaje en español. incluye traducciones de frege, russell, grice y putnam. es la referencia estándar para el marco teórico de filosofía del lenguaje del proyecto. valdés villanueva">
+      <button class="copiar" title="Copiar esta referencia">copiar</button>
+      <div class="entry-meta"><span class="tag">Valdés Villanueva</span></div>
+      <p class="apa">Valdés Villanueva, L. M. (Ed.). (2000). <em>La búsqueda del significado: Lecturas de filosofía del lenguaje</em> (3.ª ed.). Tecnos / Universidad de Murcia.</p>
+      <p class="note">Antología canónica de la filosofía del lenguaje en español. Incluye traducciones de Frege, Russell, Grice y Putnam. Es la referencia estándar para el marco teórico de filosofía del lenguaje del proyecto.</p>
+    </article>
+    <article class="entry" data-esen="0" data-nueva="0" data-apa="Putnam, H. (1991). El significado de «significado». En L. M. Valdés Villanueva (Ed.), La búsqueda del significado: Lecturas de filosofía del lenguaje (pp. 131–193). Tecnos / Universidad de Murcia. (Trabajo original publicado en 1975)" data-busca="putnam, h. (1991). el significado de «significado». en l. m. valdés villanueva (ed.), la búsqueda del significado: lecturas de filosofía del lenguaje (pp. 131–193). tecnos / universidad de murcia. (trabajo original publicado en 1975) el texto fundacional del externalismo semántico: el significado está determinado en parte por el entorno y no solo por los estados mentales del hablante. el significado de «paz» en el acuerdo de 2016 no lo determina ningún hablante individual: está anclado externamente en el derecho internacional humanitario. putnam · externalismo">
+      <button class="copiar" title="Copiar esta referencia">copiar</button>
+      <div class="entry-meta"><span class="tag">Putnam · Externalismo</span></div>
+      <p class="apa">Putnam, H. (1991). El significado de «significado». En L. M. Valdés Villanueva (Ed.), <em>La búsqueda del significado: Lecturas de filosofía del lenguaje</em> (pp. 131–193). Tecnos / Universidad de Murcia. (Trabajo original publicado en 1975)</p>
+      <p class="note">El texto fundacional del externalismo semántico: el significado está determinado en parte por el entorno y no solo por los estados mentales del hablante. El significado de «paz» en el Acuerdo de 2016 no lo determina ningún hablante individual: está anclado externamente en el derecho internacional humanitario.</p>
+    </article>
+  </div>
+  </div>
+</section>
+<section class="section" id="sec-politica">
+  <button class="section-header" aria-expanded="true"><span class="flecha">&#9660;</span><span>II. Filosofía política y social</span><span class="n">14 referencias</span></button>
+  <div class="section-sub">Benjamin · Arendt · Habermas · Foucault · Butler · Agamben · Bourdieu · Ricoeur</div>
+  <div class="cuerpo">
+  <div class="group">
+    <div class="group-title">Walter Benjamin (1892–1940)</div>
+    <article class="entry" data-esen="1" data-nueva="0" data-apa="Benjamin, W. (2009). Tesis sobre el concepto de historia y otros ensayos sobre historia y política (B. Echeverría, Ed. y Trad.). Itaca / Universidad Autónoma de la Ciudad de México. (Obras originales publicadas entre 1921 y 1940)" data-busca="benjamin, w. (2009). tesis sobre el concepto de historia y otros ensayos sobre historia y política (b. echeverría, ed. y trad.). itaca / universidad autónoma de la ciudad de méxico. (obras originales publicadas entre 1921 y 1940) edición indicada: itaca / uacm, edición de bolívar echeverría. incluye las dieciocho tesis sobre el concepto de historia (1940) —el ángel de la historia (ix), el tiempo mesiánico (xiv–xv), la responsabilidad con los vencidos (vi)— más «para una crítica de la violencia» (1921). el análisis del «tiempo homogéneo y vacío» del progreso es contrapunto crítico del descenso estadístico posterior a 2016. benjamin">
+      <button class="copiar" title="Copiar esta referencia">copiar</button>
+      <div class="entry-meta"><span class="tag">Benjamin</span><span class="tag tag-esen">Esencial</span></div>
+      <p class="apa">Benjamin, W. (2009). <em>Tesis sobre el concepto de historia y otros ensayos sobre historia y política</em> (B. Echeverría, Ed. y Trad.). Itaca / Universidad Autónoma de la Ciudad de México. (Obras originales publicadas entre 1921 y 1940)</p>
+      <p class="note"><strong>Edición indicada: Itaca / UACM, edición de Bolívar Echeverría.</strong> Incluye las dieciocho Tesis sobre el concepto de historia (1940) —el Ángel de la Historia (IX), el tiempo mesiánico (XIV–XV), la responsabilidad con los vencidos (VI)— más «Para una crítica de la violencia» (1921). El análisis del «tiempo homogéneo y vacío» del progreso es contrapunto crítico del descenso estadístico posterior a 2016.</p>
+    </article>
+    <article class="entry" data-esen="1" data-nueva="0" data-apa="Benjamin, W. (2015). Calle de sentido único (J. J. del Solar y M. Abella, Trads.). Alianza Editorial. (Obra original publicada en 1928)" data-busca="benjamin, w. (2015). calle de sentido único (j. j. del solar y m. abella, trads.). alianza editorial. (obra original publicada en 1928) edición indicada: alianza editorial. aforismos, imágenes dialécticas y fragmentos de crítica cultural que muestran el método: leer los fragmentos del presente como constelaciones que iluminan posibilidades históricas reprimidas. inspiración metodológica para el tipo de lectura que el proyecto propone de los datos. benjamin">
+      <button class="copiar" title="Copiar esta referencia">copiar</button>
+      <div class="entry-meta"><span class="tag">Benjamin</span><span class="tag tag-esen">Esencial</span></div>
+      <p class="apa">Benjamin, W. (2015). <em>Calle de sentido único</em> (J. J. del Solar y M. Abella, Trads.). Alianza Editorial. (Obra original publicada en 1928)</p>
+      <p class="note"><strong>Edición indicada: Alianza Editorial.</strong> Aforismos, imágenes dialécticas y fragmentos de crítica cultural que muestran el método: leer los fragmentos del presente como constelaciones que iluminan posibilidades históricas reprimidas. Inspiración metodológica para el tipo de lectura que el proyecto propone de los datos.</p>
+    </article>
+    <article class="entry" data-esen="0" data-nueva="0" data-apa="Echeverría, B. (2010). Modernidad y blanquitud. Era." data-busca="echeverría, b. (2010). modernidad y blanquitud. era. echeverría es el mejor intérprete latinoamericano de benjamin. conecta el pensamiento benjaminiano con la colonialidad y la violencia estructural, e introduce la categoría de «blanquitud» como régimen de clasificación que también opera en los sistemas de registro de víctimas. benjamin · contexto latinoamericano">
+      <button class="copiar" title="Copiar esta referencia">copiar</button>
+      <div class="entry-meta"><span class="tag">Benjamin · contexto latinoamericano</span></div>
+      <p class="apa">Echeverría, B. (2010). <em>Modernidad y blanquitud</em>. Era.</p>
+      <p class="note">Echeverría es el mejor intérprete latinoamericano de Benjamin. Conecta el pensamiento benjaminiano con la colonialidad y la violencia estructural, e introduce la categoría de «blanquitud» como régimen de clasificación que también opera en los sistemas de registro de víctimas.</p>
+    </article>
+  </div>
+  <div class="group">
+    <div class="group-title">Hannah Arendt (1906–1975)</div>
+    <article class="entry" data-esen="0" data-nueva="0" data-apa="Arendt, H. (2005). Sobre la naturaleza del totalitarismo: Un ensayo de comprensión. En H. Arendt, Ensayos de comprensión, 1930–1954 (A. Serrano de Haro, Trad., pp. 421–457). Caparrós. (Conferencia original de 1954)" data-busca="arendt, h. (2005). sobre la naturaleza del totalitarismo: un ensayo de comprensión. en h. arendt, ensayos de comprensión, 1930–1954 (a. serrano de haro, trad., pp. 421–457). caparrós. (conferencia original de 1954) el intento de arendt por comprender la diferencia entre totalitarismo y otras formas de despotismo. su análisis de la destrucción de la singularidad humana y de la eliminación del espacio político es aplicable al conflicto colombiano como forma de dominación que destruyó la pluralidad política de las comunidades afectadas. arendt">
+      <button class="copiar" title="Copiar esta referencia">copiar</button>
+      <div class="entry-meta"><span class="tag">Arendt</span></div>
+      <p class="apa">Arendt, H. (2005). Sobre la naturaleza del totalitarismo: Un ensayo de comprensión. En H. Arendt, <em>Ensayos de comprensión, 1930–1954</em> (A. Serrano de Haro, Trad., pp. 421–457). Caparrós. (Conferencia original de 1954)</p>
+      <p class="note">El intento de Arendt por comprender la diferencia entre totalitarismo y otras formas de despotismo. Su análisis de la destrucción de la singularidad humana y de la eliminación del espacio político es aplicable al conflicto colombiano como forma de dominación que destruyó la pluralidad política de las comunidades afectadas.</p>
+    </article>
+    <article class="entry" data-esen="0" data-nueva="0" data-apa="Arendt, H. (2005). La condición humana (R. Gil Novales, Trad.). Paidós. (Obra original publicada en 1958)" data-busca="arendt, h. (2005). la condición humana (r. gil novales, trad.). paidós. (obra original publicada en 1958) distinción entre labor, trabajo y acción, y concepto de «espacio de aparición»: el espacio público donde los seres humanos actúan y se hacen visibles como actores políticos. el desplazamiento forzado de 9,3 millones de personas destruyó sistemáticamente esos espacios, que el número estadístico por sí solo no captura. arendt">
+      <button class="copiar" title="Copiar esta referencia">copiar</button>
+      <div class="entry-meta"><span class="tag">Arendt</span></div>
+      <p class="apa">Arendt, H. (2005). <em>La condición humana</em> (R. Gil Novales, Trad.). Paidós. (Obra original publicada en 1958)</p>
+      <p class="note">Distinción entre labor, trabajo y acción, y concepto de «espacio de aparición»: el espacio público donde los seres humanos actúan y se hacen visibles como actores políticos. El desplazamiento forzado de 9,3 millones de personas destruyó sistemáticamente esos espacios, que el número estadístico por sí solo no captura.</p>
+    </article>
+    <article class="entry" data-esen="1" data-nueva="0" data-apa="Arendt, H. (2006). Eichmann en Jerusalén: Un estudio sobre la banalidad del mal (C. Ribalta, Trad.). Debolsillo. (Obra original publicada en 1963)" data-busca="arendt, h. (2006). eichmann en jerusalén: un estudio sobre la banalidad del mal (c. ribalta, trad.). debolsillo. (obra original publicada en 1963) edición indicada: debolsillo. la «banalidad del mal» —el mal extremo que solo requiere la suspensión del pensamiento crítico en contextos burocráticos— es aplicable a la responsabilidad de las instituciones que administran el registro. el ruv como burocracia del reconocimiento puede operar con la misma irreflexión. arendt">
+      <button class="copiar" title="Copiar esta referencia">copiar</button>
+      <div class="entry-meta"><span class="tag">Arendt</span><span class="tag tag-esen">Esencial</span></div>
+      <p class="apa">Arendt, H. (2006). <em>Eichmann en Jerusalén: Un estudio sobre la banalidad del mal</em> (C. Ribalta, Trad.). Debolsillo. (Obra original publicada en 1963)</p>
+      <p class="note"><strong>Edición indicada: Debolsillo.</strong> La «banalidad del mal» —el mal extremo que solo requiere la suspensión del pensamiento crítico en contextos burocráticos— es aplicable a la responsabilidad de las instituciones que administran el registro. El RUV como burocracia del reconocimiento puede operar con la misma irreflexión.</p>
+    </article>
+  </div>
+  <div class="group">
+    <div class="group-title">Jürgen Habermas (1929–)</div>
+    <article class="entry" data-esen="0" data-nueva="0" data-apa="Habermas, J. (1986). Ciencia y técnica como «ideología» (M. Jiménez Redondo y M. Garrido, Trads.). Tecnos. (Obra original publicada en 1968)" data-busca="habermas, j. (1986). ciencia y técnica como «ideología» (m. jiménez redondo y m. garrido, trads.). tecnos. (obra original publicada en 1968) edición indicada: tecnos. habermas critica la reducción de la racionalidad política a racionalidad técnica. su argumento se aplica a la crítica del análisis estadístico cuando se presenta como objetivo o neutral: la estadística sobre víctimas no es una técnica neutral sino una práctica político-epistémica con consecuencias normativas. habermas">
+      <button class="copiar" title="Copiar esta referencia">copiar</button>
+      <div class="entry-meta"><span class="tag">Habermas</span></div>
+      <p class="apa">Habermas, J. (1986). <em>Ciencia y técnica como «ideología»</em> (M. Jiménez Redondo y M. Garrido, Trads.). Tecnos. (Obra original publicada en 1968)</p>
+      <p class="note"><strong>Edición indicada: Tecnos.</strong> Habermas critica la reducción de la racionalidad política a racionalidad técnica. Su argumento se aplica a la crítica del análisis estadístico cuando se presenta como objetivo o neutral: la estadística sobre víctimas no es una técnica neutral sino una práctica político-epistémica con consecuencias normativas.</p>
+    </article>
+    <article class="entry" data-esen="1" data-nueva="0" data-apa="Habermas, J. (1999). Teoría de la acción comunicativa (M. Jiménez Redondo, Trad.; 2 vols.). Taurus. (Obra original publicada en 1981)" data-busca="habermas, j. (1999). teoría de la acción comunicativa (m. jiménez redondo, trad.; 2 vols.). taurus. (obra original publicada en 1981) distinción entre acción estratégica (orientada al éxito) y acción comunicativa (orientada al entendimiento). el conflicto fue el dominio de la acción estratégica; el acuerdo de 2016, un intento de restaurar condiciones para la acción comunicativa. la situación ideal de habla permite evaluar la legitimidad de los procesos de paz. habermas">
+      <button class="copiar" title="Copiar esta referencia">copiar</button>
+      <div class="entry-meta"><span class="tag">Habermas</span><span class="tag tag-esen">Esencial</span></div>
+      <p class="apa">Habermas, J. (1999). <em>Teoría de la acción comunicativa</em> (M. Jiménez Redondo, Trad.; 2 vols.). Taurus. (Obra original publicada en 1981)</p>
+      <p class="note">Distinción entre acción estratégica (orientada al éxito) y acción comunicativa (orientada al entendimiento). El conflicto fue el dominio de la acción estratégica; el Acuerdo de 2016, un intento de restaurar condiciones para la acción comunicativa. La situación ideal de habla permite evaluar la legitimidad de los procesos de paz.</p>
+    </article>
+    <article class="entry" data-esen="0" data-nueva="0" data-apa="Habermas, J. (2001). Verdad y justificación: Ensayos filosóficos (P. Fabra Abat y L. Díez, Trads.). Trotta. (Obra original publicada en 1999)" data-busca="habermas, j. (2001). verdad y justificación: ensayos filosóficos (p. fabra abat y l. díez, trads.). trotta. (obra original publicada en 1999) edición indicada: trotta. la distinción entre verdad y justificación —una afirmación puede estar justificada en el contexto actual y aun así ser falsa— es epistemológicamente central: los datos del ruv están justificados institucionalmente, lo que no los vuelve una descripción completa del conflicto. habermas">
+      <button class="copiar" title="Copiar esta referencia">copiar</button>
+      <div class="entry-meta"><span class="tag">Habermas</span></div>
+      <p class="apa">Habermas, J. (2001). <em>Verdad y justificación: Ensayos filosóficos</em> (P. Fabra Abat y L. Díez, Trads.). Trotta. (Obra original publicada en 1999)</p>
+      <p class="note"><strong>Edición indicada: Trotta.</strong> La distinción entre verdad y justificación —una afirmación puede estar justificada en el contexto actual y aun así ser falsa— es epistemológicamente central: los datos del RUV están justificados institucionalmente, lo que no los vuelve una descripción completa del conflicto.</p>
+    </article>
+  </div>
+  <div class="group">
+    <div class="group-title">Michel Foucault (1926–1984)</div>
+    <article class="entry" data-esen="1" data-nueva="0" data-apa="Foucault, M. (2002). Vigilar y castigar: Nacimiento de la prisión (A. Garzón del Camino, Trad.). Siglo XXI. (Obra original publicada en 1975)" data-busca="foucault, m. (2002). vigilar y castigar: nacimiento de la prisión (a. garzón del camino, trad.). siglo xxi. (obra original publicada en 1975) edición indicada: siglo xxi, traducción de garzón del camino. el panóptico, la disciplina, el poder/saber y la genealogía como método son aplicables al ruv: el registro es un dispositivo que produce verdad sobre las víctimas según reglas específicas de un régimen epistémico. foucault">
+      <button class="copiar" title="Copiar esta referencia">copiar</button>
+      <div class="entry-meta"><span class="tag">Foucault</span><span class="tag tag-esen">Esencial</span></div>
+      <p class="apa">Foucault, M. (2002). <em>Vigilar y castigar: Nacimiento de la prisión</em> (A. Garzón del Camino, Trad.). Siglo XXI. (Obra original publicada en 1975)</p>
+      <p class="note"><strong>Edición indicada: Siglo XXI, traducción de Garzón del Camino.</strong> El panóptico, la disciplina, el poder/saber y la genealogía como método son aplicables al RUV: el Registro es un dispositivo que produce verdad sobre las víctimas según reglas específicas de un régimen epistémico.</p>
+    </article>
+  </div>
+  <div class="group">
+    <div class="group-title">Vida precaria, testimonio y reflexividad</div>
+    <article class="entry" data-esen="0" data-nueva="0" data-apa="Butler, J. (2010). Marcos de guerra: Las vidas lloradas (B. Moreno Carrillo, Trad.). Paidós. (Obra original publicada en 2009)" data-busca="butler, j. (2010). marcos de guerra: las vidas lloradas (b. moreno carrillo, trad.). paidós. (obra original publicada en 2009) ¿qué vidas son reconocidas como «vidas que importan» y cuáles quedan fuera del duelo público? las víctimas no registradas en el ruv son vidas que el sistema institucional no puede llorar colectivamente. conecta directamente con la línea de trabajo sobre el silencio institucional. butler">
+      <button class="copiar" title="Copiar esta referencia">copiar</button>
+      <div class="entry-meta"><span class="tag">Butler</span></div>
+      <p class="apa">Butler, J. (2010). <em>Marcos de guerra: Las vidas lloradas</em> (B. Moreno Carrillo, Trad.). Paidós. (Obra original publicada en 2009)</p>
+      <p class="note">¿Qué vidas son reconocidas como «vidas que importan» y cuáles quedan fuera del duelo público? Las víctimas no registradas en el RUV son vidas que el sistema institucional no puede llorar colectivamente. Conecta directamente con la línea de trabajo sobre el silencio institucional.</p>
+    </article>
+    <article class="entry" data-esen="0" data-nueva="0" data-apa="Agamben, G. (2009). Lo que queda de Auschwitz: El archivo y el testigo (Homo sacer III) (A. Gimeno Cuspinera, Trad.). Pre-Textos. (Obra original publicada en 1998)" data-busca="agamben, g. (2009). lo que queda de auschwitz: el archivo y el testigo (homo sacer iii) (a. gimeno cuspinera, trad.). pre-textos. (obra original publicada en 1998) la figura del testigo —quien habla en nombre de quien ya no puede hablar— es aplicable al análisis de datos: el analista es un testigo que habla en nombre de víctimas que no participan en el juego de lenguaje del registro. agamben">
+      <button class="copiar" title="Copiar esta referencia">copiar</button>
+      <div class="entry-meta"><span class="tag">Agamben</span></div>
+      <p class="apa">Agamben, G. (2009). <em>Lo que queda de Auschwitz: El archivo y el testigo (Homo sacer III)</em> (A. Gimeno Cuspinera, Trad.). Pre-Textos. (Obra original publicada en 1998)</p>
+      <p class="note">La figura del testigo —quien habla en nombre de quien ya no puede hablar— es aplicable al análisis de datos: el analista es un testigo que habla en nombre de víctimas que no participan en el juego de lenguaje del registro.</p>
+    </article>
+    <article class="entry" data-esen="0" data-nueva="0" data-apa="Bourdieu, P. (1999). La miseria del mundo (J. Jordá et al., Trads.). Akal. (Obra original publicada en 1993)" data-busca="bourdieu, p. (1999). la miseria del mundo (j. jordá et al., trads.). akal. (obra original publicada en 1993) bourdieu muestra cómo dar voz a los excluidos sin reproducir las relaciones de dominación que se estudian. su concepto de reflexividad fundamenta la sección de reflexividad metodológica del informe. bourdieu">
+      <button class="copiar" title="Copiar esta referencia">copiar</button>
+      <div class="entry-meta"><span class="tag">Bourdieu</span></div>
+      <p class="apa">Bourdieu, P. (1999). <em>La miseria del mundo</em> (J. Jordá et al., Trads.). Akal. (Obra original publicada en 1993)</p>
+      <p class="note">Bourdieu muestra cómo dar voz a los excluidos sin reproducir las relaciones de dominación que se estudian. Su concepto de reflexividad fundamenta la sección de reflexividad metodológica del informe.</p>
+    </article>
+    <article class="entry" data-esen="1" data-nueva="0" data-apa="Ricoeur, P. (2003). La memoria, la historia, el olvido (A. Neira, Trad.). Trotta. (Obra original publicada en 2000)" data-busca="ricoeur, p. (2003). la memoria, la historia, el olvido (a. neira, trad.). trotta. (obra original publicada en 2000) columna del marco filosófico del proyecto. la noción de huella y el análisis de la operación historiográfica (documento, explicación, representación) dan nombre al proyecto y estructuran la distinción entre el hecho y su inscripción. la «deuda con los muertos» vincula el análisis estadístico con la responsabilidad histórica. ricoeur">
+      <button class="copiar" title="Copiar esta referencia">copiar</button>
+      <div class="entry-meta"><span class="tag">Ricoeur</span><span class="tag tag-esen">Esencial</span></div>
+      <p class="apa">Ricoeur, P. (2003). <em>La memoria, la historia, el olvido</em> (A. Neira, Trad.). Trotta. (Obra original publicada en 2000)</p>
+      <p class="note">Columna del marco filosófico del proyecto. La noción de <em>huella</em> y el análisis de la operación historiográfica (documento, explicación, representación) dan nombre al proyecto y estructuran la distinción entre el hecho y su inscripción. La «deuda con los muertos» vincula el análisis estadístico con la responsabilidad histórica.</p>
+    </article>
+  </div>
+  </div>
+</section>
+<section class="section" id="sec-registro">
+  <button class="section-header" aria-expanded="true"><span class="flecha">&#9660;</span><span>III. Clasificación, cuantificación y doble hermenéutica</span><span class="n">9 referencias</span></button>
+  <div class="section-sub">Giddens · Hacking · Scott · Desrosières · Fricker · Bowker y Star · Porter · Espeland y Stevens — incorporación de 2026-II</div>
+  <div class="cuerpo">
+  <div class="group">
+    <div class="group-title">El puente conceptual de la fase actual</div>
+    <article class="entry" data-esen="1" data-nueva="1" data-apa="Giddens, A. (1995). La constitución de la sociedad: Bases para la teoría de la estructuración (J. L. Etcheverry, Trad.). Amorrortu. (Obra original publicada en 1984)" data-busca="giddens, a. (1995). la constitución de la sociedad: bases para la teoría de la estructuración (j. l. etcheverry, trad.). amorrortu. (obra original publicada en 1984) incorporación nueva. la doble hermenéutica: los conceptos de las ciencias sociales entran en el mundo que describen y lo modifican. es el principio que organiza toda la fase actual del proyecto, porque la categoría «víctima del conflicto armado» no describe una población preexistente, sino que participa en constituirla. giddens">
+      <button class="copiar" title="Copiar esta referencia">copiar</button>
+      <div class="entry-meta"><span class="tag">Giddens</span><span class="tag tag-esen">Esencial</span><span class="tag tag-nueva">2026-II</span></div>
+      <p class="apa">Giddens, A. (1995). <em>La constitución de la sociedad: Bases para la teoría de la estructuración</em> (J. L. Etcheverry, Trad.). Amorrortu. (Obra original publicada en 1984)</p>
+      <p class="note"><strong>Incorporación nueva.</strong> La doble hermenéutica: los conceptos de las ciencias sociales entran en el mundo que describen y lo modifican. Es el principio que organiza toda la fase actual del proyecto, porque la categoría «víctima del conflicto armado» no describe una población preexistente, sino que participa en constituirla.</p>
+    </article>
+    <article class="entry" data-esen="1" data-nueva="1" data-apa="Hacking, I. (2001). ¿La construcción social de qué? (J. Sánchez Navarro, Trad.). Paidós. (Obra original publicada en 1999)" data-busca="hacking, i. (2001). ¿la construcción social de qué? (j. sánchez navarro, trad.). paidós. (obra original publicada en 1999) incorporación nueva. hacking distingue entre clases naturales y clases interactivas: las personas clasificadas responden a su clasificación. es la versión precisa y falsable de lo que giddens enuncia en general, y la que permite formular hipótesis contrastables sobre el registro. hacking">
+      <button class="copiar" title="Copiar esta referencia">copiar</button>
+      <div class="entry-meta"><span class="tag">Hacking</span><span class="tag tag-esen">Esencial</span><span class="tag tag-nueva">2026-II</span></div>
+      <p class="apa">Hacking, I. (2001). <em>¿La construcción social de qué?</em> (J. Sánchez Navarro, Trad.). Paidós. (Obra original publicada en 1999)</p>
+      <p class="note"><strong>Incorporación nueva.</strong> Hacking distingue entre clases naturales y clases interactivas: las personas clasificadas responden a su clasificación. Es la versión precisa y falsable de lo que Giddens enuncia en general, y la que permite formular hipótesis contrastables sobre el registro.</p>
+    </article>
+    <article class="entry" data-esen="1" data-nueva="1" data-apa="Hacking, I. (1995). The looping effects of human kinds. En D. Sperber, D. Premack y A. J. Premack (Eds.), Causal cognition: A multidisciplinary debate (pp. 351–383). Oxford University Press." data-busca="hacking, i. (1995). the looping effects of human kinds. en d. sperber, d. premack y a. j. premack (eds.), causal cognition: a multidisciplinary debate (pp. 351–383). oxford university press. incorporación nueva. el texto donde hacking formula el efecto bucle. es la referencia que sostiene la hipótesis h6 del proyecto: la regla de conteo dibuja la serie, y la serie realimenta la regla. hacking · efecto bucle">
+      <button class="copiar" title="Copiar esta referencia">copiar</button>
+      <div class="entry-meta"><span class="tag">Hacking · efecto bucle</span><span class="tag tag-esen">Esencial</span><span class="tag tag-nueva">2026-II</span></div>
+      <p class="apa">Hacking, I. (1995). The looping effects of human kinds. En D. Sperber, D. Premack y A. J. Premack (Eds.), <em>Causal cognition: A multidisciplinary debate</em> (pp. 351–383). Oxford University Press.</p>
+      <p class="note"><strong>Incorporación nueva.</strong> El texto donde Hacking formula el efecto bucle. Es la referencia que sostiene la hipótesis H6 del proyecto: la regla de conteo dibuja la serie, y la serie realimenta la regla.</p>
+    </article>
+    <article class="entry" data-esen="0" data-nueva="1" data-apa="Scott, J. C. (1998). Seeing like a state: How certain schemes to improve the human condition have failed. Yale University Press." data-busca="scott, j. c. (1998). seeing like a state: how certain schemes to improve the human condition have failed. yale university press. incorporación nueva. la legibilidad estatal: para administrar, el estado simplifica. las cuatro columnas de perfil del ruv (sexo, ciclo vital, etnia, discapacidad) son exactamente ese tipo de simplificación, y el proyecto documenta qué queda fuera de ellas. scott">
+      <button class="copiar" title="Copiar esta referencia">copiar</button>
+      <div class="entry-meta"><span class="tag">Scott</span><span class="tag tag-nueva">2026-II</span></div>
+      <p class="apa">Scott, J. C. (1998). <em>Seeing like a state: How certain schemes to improve the human condition have failed</em>. Yale University Press.</p>
+      <p class="note"><strong>Incorporación nueva.</strong> La legibilidad estatal: para administrar, el Estado simplifica. Las cuatro columnas de perfil del RUV (sexo, ciclo vital, etnia, discapacidad) son exactamente ese tipo de simplificación, y el proyecto documenta qué queda fuera de ellas.</p>
+    </article>
+    <article class="entry" data-esen="1" data-nueva="1" data-apa="Desrosières, A. (1998). The politics of large numbers: A history of statistical reasoning (C. Naish, Trad.). Harvard University Press. (Obra original publicada en 1993)" data-busca="desrosières, a. (1998). the politics of large numbers: a history of statistical reasoning (c. naish, trad.). harvard university press. (obra original publicada en 1993) incorporación nueva. historia de la razón estadística como historia política. la tesis de que una categoría estadística es a la vez una convención y una realidad es el puente entre la capa filosófica y la capa de datos del proyecto. desrosières">
+      <button class="copiar" title="Copiar esta referencia">copiar</button>
+      <div class="entry-meta"><span class="tag">Desrosières</span><span class="tag tag-esen">Esencial</span><span class="tag tag-nueva">2026-II</span></div>
+      <p class="apa">Desrosières, A. (1998). <em>The politics of large numbers: A history of statistical reasoning</em> (C. Naish, Trad.). Harvard University Press. (Obra original publicada en 1993)</p>
+      <p class="note"><strong>Incorporación nueva.</strong> Historia de la razón estadística como historia política. La tesis de que una categoría estadística es a la vez una convención y una realidad es el puente entre la capa filosófica y la capa de datos del proyecto.</p>
+    </article>
+    <article class="entry" data-esen="0" data-nueva="1" data-apa="Fricker, M. (2017). Injusticia epistémica: El poder y la ética del conocimiento (R. García Pérez, Trad.). Herder. (Obra original publicada en 2007)" data-busca="fricker, m. (2017). injusticia epistémica: el poder y la ética del conocimiento (r. garcía pérez, trad.). herder. (obra original publicada en 2007) incorporación nueva. la injusticia hermenéutica —no disponer de los recursos conceptuales para hacer inteligible la propia experiencia— nombra con precisión lo que ocurre cuando un daño no tiene casilla en el formulario de declaración. fricker">
+      <button class="copiar" title="Copiar esta referencia">copiar</button>
+      <div class="entry-meta"><span class="tag">Fricker</span><span class="tag tag-nueva">2026-II</span></div>
+      <p class="apa">Fricker, M. (2017). <em>Injusticia epistémica: El poder y la ética del conocimiento</em> (R. García Pérez, Trad.). Herder. (Obra original publicada en 2007)</p>
+      <p class="note"><strong>Incorporación nueva.</strong> La injusticia hermenéutica —no disponer de los recursos conceptuales para hacer inteligible la propia experiencia— nombra con precisión lo que ocurre cuando un daño no tiene casilla en el formulario de declaración.</p>
+    </article>
+    <article class="entry" data-esen="0" data-nueva="1" data-apa="Bowker, G. C., y Star, S. L. (1999). Sorting things out: Classification and its consequences. MIT Press." data-busca="bowker, g. c., y star, s. l. (1999). sorting things out: classification and its consequences. mit press. incorporación nueva. el estudio clásico de las infraestructuras de clasificación y de sus residuos: lo que no encaja en una categoría no desaparece, se vuelve invisible. marco directo para el análisis de la categoría «sin información» y de las celdas suprimidas. bowker y star">
+      <button class="copiar" title="Copiar esta referencia">copiar</button>
+      <div class="entry-meta"><span class="tag">Bowker y Star</span><span class="tag tag-nueva">2026-II</span></div>
+      <p class="apa">Bowker, G. C., y Star, S. L. (1999). <em>Sorting things out: Classification and its consequences</em>. MIT Press.</p>
+      <p class="note"><strong>Incorporación nueva.</strong> El estudio clásico de las infraestructuras de clasificación y de sus residuos: lo que no encaja en una categoría no desaparece, se vuelve invisible. Marco directo para el análisis de la categoría «Sin información» y de las celdas suprimidas.</p>
+    </article>
+    <article class="entry" data-esen="0" data-nueva="1" data-apa="Porter, T. M. (1995). Trust in numbers: The pursuit of objectivity in science and public life. Princeton University Press." data-busca="porter, t. m. (1995). trust in numbers: the pursuit of objectivity in science and public life. princeton university press. incorporación nueva. por qué las instituciones débiles en legitimidad recurren a la cuantificación. explica el papel político de la cifra oficial de víctimas y por qué su revisión es siempre un acto público, no solo técnico. porter">
+      <button class="copiar" title="Copiar esta referencia">copiar</button>
+      <div class="entry-meta"><span class="tag">Porter</span><span class="tag tag-nueva">2026-II</span></div>
+      <p class="apa">Porter, T. M. (1995). <em>Trust in numbers: The pursuit of objectivity in science and public life</em>. Princeton University Press.</p>
+      <p class="note"><strong>Incorporación nueva.</strong> Por qué las instituciones débiles en legitimidad recurren a la cuantificación. Explica el papel político de la cifra oficial de víctimas y por qué su revisión es siempre un acto público, no solo técnico.</p>
+    </article>
+    <article class="entry" data-esen="0" data-nueva="1" data-apa="Espeland, W. N., y Stevens, M. L. (2008). A sociology of quantification. European Journal of Sociology, 49(3), 401–436." data-busca="espeland, w. n., y stevens, m. l. (2008). a sociology of quantification. european journal of sociology, 49(3), 401–436. incorporación nueva. programa de investigación sobre la cuantificación como práctica social con efectos reactivos. es la formulación sociológica del mismo fenómeno que hacking describe en términos filosóficos. espeland y stevens">
+      <button class="copiar" title="Copiar esta referencia">copiar</button>
+      <div class="entry-meta"><span class="tag">Espeland y Stevens</span><span class="tag tag-nueva">2026-II</span></div>
+      <p class="apa">Espeland, W. N., y Stevens, M. L. (2008). A sociology of quantification. <em>European Journal of Sociology</em>, <em>49</em>(3), 401–436.</p>
+      <p class="note"><strong>Incorporación nueva.</strong> Programa de investigación sobre la cuantificación como práctica social con efectos reactivos. Es la formulación sociológica del mismo fenómeno que Hacking describe en términos filosóficos.</p>
+    </article>
+  </div>
+  </div>
+</section>
+<section class="section" id="sec-colombia">
+  <button class="section-header" aria-expanded="true"><span class="flecha">&#9660;</span><span>IV. Documentos institucionales y marco jurídico — Colombia</span><span class="n">16 referencias</span></button>
+  <div class="section-sub">CEV · CNMH · UARIV · JEP · Ley 1448 · Corte Constitucional · INDEPAZ · CERAC</div>
+  <div class="cuerpo">
+  <div class="group">
+    <div class="group-title">Comisión para el Esclarecimiento de la Verdad</div>
+    <article class="entry" data-esen="1" data-nueva="0" data-apa="Comisión para el Esclarecimiento de la Verdad, la Convivencia y la No Repetición. (2022). Hay futuro si hay verdad: Informe final de la Comisión de la Verdad (11 vols.). Comisión de la Verdad. https://www.comisiondelaverdad.co/hay-futuro-si-hay-verdad" data-busca="comisión para el esclarecimiento de la verdad, la convivencia y la no repetición. (2022). hay futuro si hay verdad: informe final de la comisión de la verdad (11 vols.). comisión de la verdad. https://www.comisiondelaverdad.co/hay-futuro-si-hay-verdad informe final de la comisión, 11 volúmenes. para el proyecto: los tomos «hallazgos y recomendaciones», «mi cuerpo es la verdad» y «resistir no es aguantar». en apa 7 cada volumen se cita individualmente cuando se referencia de forma específica. comisión de la verdad">
+      <button class="copiar" title="Copiar esta referencia">copiar</button>
+      <div class="entry-meta"><span class="tag">Comisión de la Verdad</span><span class="tag tag-esen">Esencial</span></div>
+      <p class="apa">Comisión para el Esclarecimiento de la Verdad, la Convivencia y la No Repetición. (2022). <em>Hay futuro si hay verdad: Informe final de la Comisión de la Verdad</em> (11 vols.). Comisión de la Verdad. https://www.comisiondelaverdad.co/hay-futuro-si-hay-verdad</p>
+      <p class="note">Informe final de la Comisión, 11 volúmenes. Para el proyecto: los tomos «Hallazgos y recomendaciones», «Mi cuerpo es la verdad» y «Resistir no es aguantar». En APA 7 cada volumen se cita individualmente cuando se referencia de forma específica.</p>
+    </article>
+    <article class="entry" data-esen="0" data-nueva="0" data-apa="Comisión para el Esclarecimiento de la Verdad, la Convivencia y la No Repetición. (2022). Hallazgos y recomendaciones de la Comisión de la Verdad de Colombia. Comisión de la Verdad. https://www.comisiondelaverdad.co/hallazgos-y-recomendaciones" data-busca="comisión para el esclarecimiento de la verdad, la convivencia y la no repetición. (2022). hallazgos y recomendaciones de la comisión de la verdad de colombia. comisión de la verdad. https://www.comisiondelaverdad.co/hallazgos-y-recomendaciones volumen síntesis del informe final: 10 hallazgos centrales y 96 recomendaciones. es el volumen de referencia para contrastar los picos y las concentraciones temporales del ruv con las conclusiones de la comisión. comisión de la verdad · hallazgos">
+      <button class="copiar" title="Copiar esta referencia">copiar</button>
+      <div class="entry-meta"><span class="tag">Comisión de la Verdad · hallazgos</span></div>
+      <p class="apa">Comisión para el Esclarecimiento de la Verdad, la Convivencia y la No Repetición. (2022). <em>Hallazgos y recomendaciones de la Comisión de la Verdad de Colombia</em>. Comisión de la Verdad. https://www.comisiondelaverdad.co/hallazgos-y-recomendaciones</p>
+      <p class="note">Volumen síntesis del Informe final: 10 hallazgos centrales y 96 recomendaciones. Es el volumen de referencia para contrastar los picos y las concentraciones temporales del RUV con las conclusiones de la Comisión.</p>
+    </article>
+  </div>
+  <div class="group">
+    <div class="group-title">Centro Nacional de Memoria Histórica</div>
+    <article class="entry" data-esen="1" data-nueva="0" data-apa="Centro Nacional de Memoria Histórica. (2013). ¡Basta ya! Colombia: Memorias de guerra y dignidad. CNMH / Departamento para la Prosperidad Social. http://www.centrodememoriahistorica.gov.co/micrositios/informeGeneral/" data-busca="centro nacional de memoria histórica. (2013). ¡basta ya! colombia: memorias de guerra y dignidad. cnmh / departamento para la prosperidad social. http://www.centrodememoriahistorica.gov.co/micrositios/informegeneral/ informe general del cnmh. contiene la cronología y las estadísticas históricas con que se contrastan los datos del ruv. el proyecto documenta que la cifra de desplazamiento del periodo 1996–2002 pasó de unas 300.000 personas anuales en este informe a 447.711 en el corte de 2026: el pasado crece en el registro. cnmh · ¡basta ya!">
+      <button class="copiar" title="Copiar esta referencia">copiar</button>
+      <div class="entry-meta"><span class="tag">CNMH · ¡Basta ya!</span><span class="tag tag-esen">Esencial</span></div>
+      <p class="apa">Centro Nacional de Memoria Histórica. (2013). <em>¡Basta ya! Colombia: Memorias de guerra y dignidad</em>. CNMH / Departamento para la Prosperidad Social. http://www.centrodememoriahistorica.gov.co/micrositios/informeGeneral/</p>
+      <p class="note">Informe general del CNMH. Contiene la cronología y las estadísticas históricas con que se contrastan los datos del RUV. El proyecto documenta que la cifra de desplazamiento del periodo 1996–2002 pasó de unas 300.000 personas anuales en este informe a 447.711 en el corte de 2026: el pasado crece en el registro.</p>
+    </article>
+    <article class="entry" data-esen="0" data-nueva="0" data-apa="Centro Nacional de Memoria Histórica. (2015). Una nación desplazada: Informe nacional del desplazamiento forzado en Colombia. CNMH / UARIV. https://www.centrodememoriahistorica.gov.co/descargas/informes2015/nacion-desplazada/" data-busca="centro nacional de memoria histórica. (2015). una nación desplazada: informe nacional del desplazamiento forzado en colombia. cnmh / uariv. https://www.centrodememoriahistorica.gov.co/descargas/informes2015/nacion-desplazada/ informe específico sobre el hecho victimizante más masivo del ruv: análisis histórico, magnitudes, causas, regiones y consecuencias. referencia obligada para interpretar la serie de desplazamiento del proyecto. cnmh · desplazamiento">
+      <button class="copiar" title="Copiar esta referencia">copiar</button>
+      <div class="entry-meta"><span class="tag">CNMH · Desplazamiento</span></div>
+      <p class="apa">Centro Nacional de Memoria Histórica. (2015). <em>Una nación desplazada: Informe nacional del desplazamiento forzado en Colombia</em>. CNMH / UARIV. https://www.centrodememoriahistorica.gov.co/descargas/informes2015/nacion-desplazada/</p>
+      <p class="note">Informe específico sobre el hecho victimizante más masivo del RUV: análisis histórico, magnitudes, causas, regiones y consecuencias. Referencia obligada para interpretar la serie de desplazamiento del proyecto.</p>
+    </article>
+    <article class="entry" data-esen="0" data-nueva="0" data-apa="Centro Nacional de Memoria Histórica. (2017). La guerra inscrita en el cuerpo: Informe nacional de violencia sexual en el conflicto armado. CNMH. https://www.centrodememoriahistorica.gov.co/descargas/informes2017/la-guerra-inscrita-en-el-cuerpo/" data-busca="centro nacional de memoria histórica. (2017). la guerra inscrita en el cuerpo: informe nacional de violencia sexual en el conflicto armado. cnmh. https://www.centrodememoriahistorica.gov.co/descargas/informes2017/la-guerra-inscrita-en-el-cuerpo/ relevante para el diferencial de género: mujeres son el 89,4 % de las víctimas de delitos sexuales en el ruv. soporta la hipótesis h7 sobre visibilidad del daño: la cifra de violencia sexual 1985–2012 se multiplicó por veinte entre el informe de 2013 y el corte de 2026. cnmh · violencia sexual">
+      <button class="copiar" title="Copiar esta referencia">copiar</button>
+      <div class="entry-meta"><span class="tag">CNMH · Violencia sexual</span></div>
+      <p class="apa">Centro Nacional de Memoria Histórica. (2017). <em>La guerra inscrita en el cuerpo: Informe nacional de violencia sexual en el conflicto armado</em>. CNMH. https://www.centrodememoriahistorica.gov.co/descargas/informes2017/la-guerra-inscrita-en-el-cuerpo/</p>
+      <p class="note">Relevante para el diferencial de género: mujeres son el 89,4 % de las víctimas de delitos sexuales en el RUV. Soporta la hipótesis H7 sobre visibilidad del daño: la cifra de violencia sexual 1985–2012 se multiplicó por veinte entre el informe de 2013 y el corte de 2026.</p>
+    </article>
+    <article class="entry" data-esen="1" data-nueva="1" data-apa="Centro Nacional de Memoria Histórica. (2026). Observatorio de Memoria y Conflicto [Base de datos]. CNMH. https://micrositios.centrodememoriahistorica.gov.co/observatorio/" data-busca="centro nacional de memoria histórica. (2026). observatorio de memoria y conflicto [base de datos]. cnmh. https://micrositios.centrodememoriahistorica.gov.co/observatorio/ incorporación nueva. fuente de la variable de exposición previa a 2010 y de la etiqueta de masacres documentadas usadas en la entrega de machine learning. es la única base externa al ruv que permite definir el tratamiento sin circularidad, porque no depende del propio registro de víctimas. cnmh · observatorio">
+      <button class="copiar" title="Copiar esta referencia">copiar</button>
+      <div class="entry-meta"><span class="tag">CNMH · Observatorio</span><span class="tag tag-esen">Esencial</span><span class="tag tag-nueva">2026-II</span></div>
+      <p class="apa">Centro Nacional de Memoria Histórica. (2026). <em>Observatorio de Memoria y Conflicto</em> [Base de datos]. CNMH. https://micrositios.centrodememoriahistorica.gov.co/observatorio/</p>
+      <p class="note"><strong>Incorporación nueva.</strong> Fuente de la variable de exposición previa a 2010 y de la etiqueta de masacres documentadas usadas en la entrega de Machine Learning. Es la única base externa al RUV que permite definir el tratamiento sin circularidad, porque no depende del propio registro de víctimas.</p>
+    </article>
+  </div>
+  <div class="group">
+    <div class="group-title">Marco jurídico</div>
+    <article class="entry" data-esen="1" data-nueva="0" data-apa="Congreso de la República de Colombia. (2011, 10 de junio). Ley 1448 de 2011: Por la cual se dictan medidas de atención, asistencia y reparación integral a las víctimas del conflicto armado interno y se dictan otras disposiciones. Diario Oficial 48096. https://www.funcionpublica.gov.co/eva/gestornormativo/norma.php?i=43043" data-busca="congreso de la república de colombia. (2011, 10 de junio). ley 1448 de 2011: por la cual se dictan medidas de atención, asistencia y reparación integral a las víctimas del conflicto armado interno y se dictan otras disposiciones. diario oficial 48096. https://www.funcionpublica.gov.co/eva/gestornormativo/norma.php?i=43043 la ley de víctimas: el acto de habla performativo que crea el ruv y define jurídicamente quién es víctima. su artículo 3 fija el 1 de enero de 1985 como umbral temporal del registro, lo que explica el acumulado anómalo de 1985 que el proyecto excluye de toda ventana de estimación. ley 1448">
+      <button class="copiar" title="Copiar esta referencia">copiar</button>
+      <div class="entry-meta"><span class="tag">Ley 1448</span><span class="tag tag-esen">Esencial</span></div>
+      <p class="apa">Congreso de la República de Colombia. (2011, 10 de junio). <em>Ley 1448 de 2011: Por la cual se dictan medidas de atención, asistencia y reparación integral a las víctimas del conflicto armado interno y se dictan otras disposiciones</em>. Diario Oficial 48096. https://www.funcionpublica.gov.co/eva/gestornormativo/norma.php?i=43043</p>
+      <p class="note">La Ley de Víctimas: el acto de habla performativo que crea el RUV y define jurídicamente quién es víctima. Su artículo 3 fija el 1 de enero de 1985 como umbral temporal del registro, lo que explica el acumulado anómalo de 1985 que el proyecto excluye de toda ventana de estimación.</p>
+    </article>
+    <article class="entry" data-esen="1" data-nueva="0" data-apa="Gobierno de Colombia y Fuerzas Armadas Revolucionarias de Colombia-Ejército del Pueblo. (2016). Acuerdo final para la terminación del conflicto y la construcción de una paz estable y duradera. Oficina del Alto Comisionado para la Paz. https://peaceaccords.nd.edu/sites/default/files/accords/Colombia_Accord.pdf" data-busca="gobierno de colombia y fuerzas armadas revolucionarias de colombia-ejército del pueblo. (2016). acuerdo final para la terminación del conflicto y la construcción de una paz estable y duradera. oficina del alto comisionado para la paz. https://peaceaccords.nd.edu/sites/default/files/accords/colombia_accord.pdf el acuerdo de la habana. es la intervención cuyo efecto estiman las tres entregas con tres estrategias distintas: salto de nivel y tendencia, capacidad predictiva y forma funcional de la transición. acuerdo de paz">
+      <button class="copiar" title="Copiar esta referencia">copiar</button>
+      <div class="entry-meta"><span class="tag">Acuerdo de Paz</span><span class="tag tag-esen">Esencial</span></div>
+      <p class="apa">Gobierno de Colombia y Fuerzas Armadas Revolucionarias de Colombia-Ejército del Pueblo. (2016). <em>Acuerdo final para la terminación del conflicto y la construcción de una paz estable y duradera</em>. Oficina del Alto Comisionado para la Paz. https://peaceaccords.nd.edu/sites/default/files/accords/Colombia_Accord.pdf</p>
+      <p class="note">El Acuerdo de La Habana. Es la intervención cuyo efecto estiman las tres entregas con tres estrategias distintas: salto de nivel y tendencia, capacidad predictiva y forma funcional de la transición.</p>
+    </article>
+    <article class="entry" data-esen="0" data-nueva="1" data-apa="Corte Constitucional de Colombia. (2004, 22 de enero). Sentencia T-025 de 2004 (M. P. M. J. Cepeda Espinosa). https://www.corteconstitucional.gov.co/relatoria/2004/t-025-04.htm" data-busca="corte constitucional de colombia. (2004, 22 de enero). sentencia t-025 de 2004 (m. p. m. j. cepeda espinosa). https://www.corteconstitucional.gov.co/relatoria/2004/t-025-04.htm incorporación nueva. declara el estado de cosas inconstitucional en materia de desplazamiento forzado. es el origen jurídico del seguimiento diferencial que explica por qué el ruv desagrega exactamente por sexo, ciclo vital, etnia y discapacidad y no por otras variables. corte constitucional · t-025">
+      <button class="copiar" title="Copiar esta referencia">copiar</button>
+      <div class="entry-meta"><span class="tag">Corte Constitucional · T-025</span><span class="tag tag-nueva">2026-II</span></div>
+      <p class="apa">Corte Constitucional de Colombia. (2004, 22 de enero). <em>Sentencia T-025 de 2004</em> (M. P. M. J. Cepeda Espinosa). https://www.corteconstitucional.gov.co/relatoria/2004/t-025-04.htm</p>
+      <p class="note"><strong>Incorporación nueva.</strong> Declara el estado de cosas inconstitucional en materia de desplazamiento forzado. Es el origen jurídico del seguimiento diferencial que explica por qué el RUV desagrega exactamente por sexo, ciclo vital, etnia y discapacidad y no por otras variables.</p>
+    </article>
+    <article class="entry" data-esen="0" data-nueva="1" data-apa="Corte Constitucional de Colombia. (2008–2009). Autos de seguimiento a la Sentencia T-025 de 2004: Autos 092 y 251 de 2008; Autos 004, 005 y 006 de 2009. https://www.corteconstitucional.gov.co/" data-busca="corte constitucional de colombia. (2008–2009). autos de seguimiento a la sentencia t-025 de 2004: autos 092 y 251 de 2008; autos 004, 005 y 006 de 2009. https://www.corteconstitucional.gov.co/ incorporación nueva. los autos de enfoque diferencial: mujeres (092), niñez (251), pueblos indígenas (004), comunidades afrodescendientes (005) y personas con discapacidad (006). explican la arquitectura de las variables de perfil del registro. corte constitucional · autos">
+      <button class="copiar" title="Copiar esta referencia">copiar</button>
+      <div class="entry-meta"><span class="tag">Corte Constitucional · autos</span><span class="tag tag-nueva">2026-II</span></div>
+      <p class="apa">Corte Constitucional de Colombia. (2008–2009). <em>Autos de seguimiento a la Sentencia T-025 de 2004: Autos 092 y 251 de 2008; Autos 004, 005 y 006 de 2009</em>. https://www.corteconstitucional.gov.co/</p>
+      <p class="note"><strong>Incorporación nueva.</strong> Los autos de enfoque diferencial: mujeres (092), niñez (251), pueblos indígenas (004), comunidades afrodescendientes (005) y personas con discapacidad (006). Explican la arquitectura de las variables de perfil del registro.</p>
+    </article>
+    <article class="entry" data-esen="0" data-nueva="1" data-apa="Presidencia de la República de Colombia. (2017, 28 de mayo). Decreto 893 de 2017: Por el cual se crean los Programas de Desarrollo con Enfoque Territorial (PDET). https://www.funcionpublica.gov.co/eva/gestornormativo/norma.php?i=81856" data-busca="presidencia de la república de colombia. (2017, 28 de mayo). decreto 893 de 2017: por el cual se crean los programas de desarrollo con enfoque territorial (pdet). https://www.funcionpublica.gov.co/eva/gestornormativo/norma.php?i=81856 incorporación nueva. define los 170 municipios pdet. el proyecto documenta por qué usarlos como grupo tratado sería un error de diseño —la lista es un producto administrativo del propio acuerdo— y los reserva como contraste de robustez. decreto 893 de 2017">
+      <button class="copiar" title="Copiar esta referencia">copiar</button>
+      <div class="entry-meta"><span class="tag">Decreto 893 de 2017</span><span class="tag tag-nueva">2026-II</span></div>
+      <p class="apa">Presidencia de la República de Colombia. (2017, 28 de mayo). <em>Decreto 893 de 2017: Por el cual se crean los Programas de Desarrollo con Enfoque Territorial (PDET)</em>. https://www.funcionpublica.gov.co/eva/gestornormativo/norma.php?i=81856</p>
+      <p class="note"><strong>Incorporación nueva.</strong> Define los 170 municipios PDET. El proyecto documenta por qué usarlos como grupo tratado sería un error de diseño —la lista es un producto administrativo del propio Acuerdo— y los reserva como contraste de robustez.</p>
+    </article>
+    <article class="entry" data-esen="0" data-nueva="1" data-apa="Congreso de la República de Colombia. (2023). Acto Legislativo 01 de 2023: Por medio del cual se reconoce al campesinado como sujeto de especial protección constitucional. https://www.funcionpublica.gov.co/eva/gestornormativo/" data-busca="congreso de la república de colombia. (2023). acto legislativo 01 de 2023: por medio del cual se reconoce al campesinado como sujeto de especial protección constitucional. https://www.funcionpublica.gov.co/eva/gestornormativo/ incorporación nueva. las fichas del ruv de 2026 ya reportan autorreconocimiento campesino, pero esa columna no aparece en los archivos descargables. es un caso vivo de categoría en formación y materia directa de la capa de doble hermenéutica. acto legislativo 01 de 2023">
+      <button class="copiar" title="Copiar esta referencia">copiar</button>
+      <div class="entry-meta"><span class="tag">Acto Legislativo 01 de 2023</span><span class="tag tag-nueva">2026-II</span></div>
+      <p class="apa">Congreso de la República de Colombia. (2023). <em>Acto Legislativo 01 de 2023: Por medio del cual se reconoce al campesinado como sujeto de especial protección constitucional</em>. https://www.funcionpublica.gov.co/eva/gestornormativo/</p>
+      <p class="note"><strong>Incorporación nueva.</strong> Las fichas del RUV de 2026 ya reportan autorreconocimiento campesino, pero esa columna no aparece en los archivos descargables. Es un caso vivo de categoría en formación y materia directa de la capa de doble hermenéutica.</p>
+    </article>
+    <article class="entry" data-esen="0" data-nueva="0" data-apa="Jurisdicción Especial para la Paz. (2021). Caso 03: Asesinatos y desapariciones forzadas presentados como bajas en combate por agentes del Estado. JEP. https://www.jep.gov.co/" data-busca="jurisdicción especial para la paz. (2021). caso 03: asesinatos y desapariciones forzadas presentados como bajas en combate por agentes del estado. jep. https://www.jep.gov.co/ el caso 03: el ejemplo más claro de cómo el lenguaje clasificatorio constituyó una realidad jurídica falsa. ejemplo empírico del argumento sobre los actos de habla performativos en el conflicto. jep">
+      <button class="copiar" title="Copiar esta referencia">copiar</button>
+      <div class="entry-meta"><span class="tag">JEP</span></div>
+      <p class="apa">Jurisdicción Especial para la Paz. (2021). <em>Caso 03: Asesinatos y desapariciones forzadas presentados como bajas en combate por agentes del Estado</em>. JEP. https://www.jep.gov.co/</p>
+      <p class="note">El Caso 03: el ejemplo más claro de cómo el lenguaje clasificatorio constituyó una realidad jurídica falsa. Ejemplo empírico del argumento sobre los actos de habla performativos en el conflicto.</p>
+    </article>
+    <article class="entry" data-esen="1" data-nueva="1" data-apa="Jurisdicción Especial para la Paz, Comisión para el Esclarecimiento de la Verdad y Human Rights Data Analysis Group. (2022). Proyecto conjunto JEP-CEV-HRDAG de integración de datos y estimaciones estadísticas sobre el conflicto armado colombiano. HRDAG. https://hrdag.org/colombia/" data-busca="jurisdicción especial para la paz, comisión para el esclarecimiento de la verdad y human rights data analysis group. (2022). proyecto conjunto jep-cev-hrdag de integración de datos y estimaciones estadísticas sobre el conflicto armado colombiano. hrdag. https://hrdag.org/colombia/ incorporación nueva. la estimación de subregistro por captura-recaptura múltiple. es la fuente contra la que el proyecto calcula la cobertura del ruv por hecho victimizante, y la que obliga a la corrección de abril de 2025 sobre las bases de homicidio y desaparición. jep · cev · hrdag">
+      <button class="copiar" title="Copiar esta referencia">copiar</button>
+      <div class="entry-meta"><span class="tag">JEP · CEV · HRDAG</span><span class="tag tag-esen">Esencial</span><span class="tag tag-nueva">2026-II</span></div>
+      <p class="apa">Jurisdicción Especial para la Paz, Comisión para el Esclarecimiento de la Verdad y Human Rights Data Analysis Group. (2022). <em>Proyecto conjunto JEP-CEV-HRDAG de integración de datos y estimaciones estadísticas sobre el conflicto armado colombiano</em>. HRDAG. https://hrdag.org/colombia/</p>
+      <p class="note"><strong>Incorporación nueva.</strong> La estimación de subregistro por captura-recaptura múltiple. Es la fuente contra la que el proyecto calcula la cobertura del RUV por hecho victimizante, y la que obliga a la corrección de abril de 2025 sobre las bases de homicidio y desaparición.</p>
+    </article>
+    <article class="entry" data-esen="0" data-nueva="0" data-apa="Instituto de Estudios para el Desarrollo y la Paz. (2024). Informe de masacres en Colombia durante el 2023. INDEPAZ. https://indepaz.org.co/informe-de-masacres-en-colombia-durante-el-2023/" data-busca="instituto de estudios para el desarrollo y la paz. (2024). informe de masacres en colombia durante el 2023. indepaz. https://indepaz.org.co/informe-de-masacres-en-colombia-durante-el-2023/ indepaz produce el seguimiento más sistemático de la violencia posterior al acuerdo. sus datos sobre masacres, líderes sociales y grupos armados sucesores son la fuente natural para la línea de trabajo sobre revictimización. indepaz">
+      <button class="copiar" title="Copiar esta referencia">copiar</button>
+      <div class="entry-meta"><span class="tag">INDEPAZ</span></div>
+      <p class="apa">Instituto de Estudios para el Desarrollo y la Paz. (2024). <em>Informe de masacres en Colombia durante el 2023</em>. INDEPAZ. https://indepaz.org.co/informe-de-masacres-en-colombia-durante-el-2023/</p>
+      <p class="note">INDEPAZ produce el seguimiento más sistemático de la violencia posterior al Acuerdo. Sus datos sobre masacres, líderes sociales y grupos armados sucesores son la fuente natural para la línea de trabajo sobre revictimización.</p>
+    </article>
+    <article class="entry" data-esen="0" data-nueva="0" data-apa="Centro de Recursos para el Análisis de Conflictos. (2024). Base de datos de acciones armadas en Colombia. CERAC. https://www.cerac.org.co/" data-busca="centro de recursos para el análisis de conflictos. (2024). base de datos de acciones armadas en colombia. cerac. https://www.cerac.org.co/ mientras el ruv registra víctimas, cerac registra eventos armados. la articulación de ambas fuentes es la vía para romper el sesgo de fuente común que invalida las correlaciones internas al registro. cerac">
+      <button class="copiar" title="Copiar esta referencia">copiar</button>
+      <div class="entry-meta"><span class="tag">CERAC</span></div>
+      <p class="apa">Centro de Recursos para el Análisis de Conflictos. (2024). <em>Base de datos de acciones armadas en Colombia</em>. CERAC. https://www.cerac.org.co/</p>
+      <p class="note">Mientras el RUV registra víctimas, CERAC registra eventos armados. La articulación de ambas fuentes es la vía para romper el sesgo de fuente común que invalida las correlaciones internas al registro.</p>
+    </article>
+  </div>
+  </div>
+</section>
+<section class="section" id="sec-datos-fuente">
+  <button class="section-header" aria-expanded="true"><span class="flecha">&#9660;</span><span>V. Fuentes de datos del proyecto — cortes de 2026</span><span class="n">7 referencias</span></button>
+  <div class="section-sub">UARIV · datos.gov.co · DANE — reemplaza el inventario de marzo de 2026</div>
+  <div class="cuerpo">
+  <div class="group">
+    <div class="group-title">Registro Único de Víctimas</div>
+    <article class="entry" data-esen="1" data-nueva="0" data-apa="Unidad para la Atención y Reparación Integral a las Víctimas. (2026). Víctimas por hecho victimizante por año — Corte 30 de septiembre de 2026 [Conjunto de datos]. UARIV. https://www.unidadvictimas.gov.co/" data-busca="unidad para la atención y reparación integral a las víctimas. (2026). víctimas por hecho victimizante por año — corte 30 de septiembre de 2026 [conjunto de datos]. uariv. https://www.unidadvictimas.gov.co/ actualiza al dataset a de la fase descriptiva. tabla principal de las tres entregas: 65.279 celdas no vacías de año de ocurrencia × hecho × perfil, con el 32,0 % de celdas iguales a uno y mediana de tres personas. nota de lectura: cada fila termina en coma, de modo que con pandas hay que leer con index_col=false o las columnas quedan corridas. uariv · corte vigente">
+      <button class="copiar" title="Copiar esta referencia">copiar</button>
+      <div class="entry-meta"><span class="tag">UARIV · corte vigente</span><span class="tag tag-esen">Esencial</span></div>
+      <p class="apa">Unidad para la Atención y Reparación Integral a las Víctimas. (2026). <em>Víctimas por hecho victimizante por año — Corte 30 de septiembre de 2026</em> [Conjunto de datos]. UARIV. https://www.unidadvictimas.gov.co/</p>
+      <p class="note"><strong>Actualiza al Dataset A de la fase descriptiva.</strong> Tabla principal de las tres entregas: 65.279 celdas no vacías de año de ocurrencia × hecho × perfil, con el 32,0 % de celdas iguales a uno y mediana de tres personas. Nota de lectura: cada fila termina en coma, de modo que con pandas hay que leer con <code>index_col=False</code> o las columnas quedan corridas.</p>
+    </article>
+    <article class="entry" data-esen="1" data-nueva="1" data-apa="Unidad para la Atención y Reparación Integral a las Víctimas. (2024–2026). Víctimas por año — Cortes de diciembre de 2024, diciembre de 2025, abril, mayo, junio, julio, agosto y septiembre de 2026 [Conjuntos de datos]. UARIV. https://www.unidadvictimas.gov.co/" data-busca="unidad para la atención y reparación integral a las víctimas. (2024–2026). víctimas por año — cortes de diciembre de 2024, diciembre de 2025, abril, mayo, junio, julio, agosto y septiembre de 2026 [conjuntos de datos]. uariv. https://www.unidadvictimas.gov.co/ incorporación nueva. la serie de cortes administrativos es el instrumento que permite medir el rezago de inscripción, que es el hallazgo más firme del proyecto. sin dos cortes no hay velocidad de registro; con la serie mensual desde noviembre de 2026 habrá una serie. uariv · serie de cortes">
+      <button class="copiar" title="Copiar esta referencia">copiar</button>
+      <div class="entry-meta"><span class="tag">UARIV · serie de cortes</span><span class="tag tag-esen">Esencial</span><span class="tag tag-nueva">2026-II</span></div>
+      <p class="apa">Unidad para la Atención y Reparación Integral a las Víctimas. (2024–2026). <em>Víctimas por año — Cortes de diciembre de 2024, diciembre de 2025, abril, mayo, junio, julio, agosto y septiembre de 2026</em> [Conjuntos de datos]. UARIV. https://www.unidadvictimas.gov.co/</p>
+      <p class="note"><strong>Incorporación nueva.</strong> La serie de cortes administrativos es el instrumento que permite medir el rezago de inscripción, que es el hallazgo más firme del proyecto. Sin dos cortes no hay velocidad de registro; con la serie mensual desde noviembre de 2026 habrá una serie.</p>
+    </article>
+    <article class="entry" data-esen="0" data-nueva="0" data-apa="Unidad para la Atención y Reparación Integral a las Víctimas. (2026). Víctimas de desplazamiento anualizado: Ocurrencia y llegada — Corte 30 de septiembre de 2026 [Conjunto de datos]. UARIV." data-busca="unidad para la atención y reparación integral a las víctimas. (2026). víctimas de desplazamiento anualizado: ocurrencia y llegada — corte 30 de septiembre de 2026 [conjunto de datos]. uariv. series de expulsión y recepción. es la base del modelo diádico de origen y destino que el proyecto reserva como alternativa al sistema autorregresivo entre series. uariv · desplazamiento">
+      <button class="copiar" title="Copiar esta referencia">copiar</button>
+      <div class="entry-meta"><span class="tag">UARIV · desplazamiento</span></div>
+      <p class="apa">Unidad para la Atención y Reparación Integral a las Víctimas. (2026). <em>Víctimas de desplazamiento anualizado: Ocurrencia y llegada — Corte 30 de septiembre de 2026</em> [Conjunto de datos]. UARIV.</p>
+      <p class="note">Series de expulsión y recepción. Es la base del modelo diádico de origen y destino que el proyecto reserva como alternativa al sistema autorregresivo entre series.</p>
+    </article>
+    <article class="entry" data-esen="0" data-nueva="1" data-apa="Unidad para la Atención y Reparación Integral a las Víctimas. (2026). Reportes territoriales por departamento, municipio y dirección territorial — Corte 30 de septiembre de 2026 [Conjuntos de datos]. UARIV." data-busca="unidad para la atención y reparación integral a las víctimas. (2026). reportes territoriales por departamento, municipio y dirección territorial — corte 30 de septiembre de 2026 [conjuntos de datos]. uariv. incorporación nueva. 54 archivos únicos tras depurar tres duplicados. advertencia documentada: las personas por ocurrencia del nivel territorial suman 4,7 % más que el total nacional, porque una persona con hechos en varios departamentos se cuenta en cada uno. el agregado territorial no es un conteo de personas únicas. uariv · territorial">
+      <button class="copiar" title="Copiar esta referencia">copiar</button>
+      <div class="entry-meta"><span class="tag">UARIV · territorial</span><span class="tag tag-nueva">2026-II</span></div>
+      <p class="apa">Unidad para la Atención y Reparación Integral a las Víctimas. (2026). <em>Reportes territoriales por departamento, municipio y dirección territorial — Corte 30 de septiembre de 2026</em> [Conjuntos de datos]. UARIV.</p>
+      <p class="note"><strong>Incorporación nueva.</strong> 54 archivos únicos tras depurar tres duplicados. Advertencia documentada: las personas por ocurrencia del nivel territorial suman 4,7 % más que el total nacional, porque una persona con hechos en varios departamentos se cuenta en cada uno. El agregado territorial no es un conteo de personas únicas.</p>
+    </article>
+    <article class="entry" data-esen="0" data-nueva="1" data-apa="Unidad para la Atención y Reparación Integral a las Víctimas. (2024–2026). Conjuntos de datos abiertos del Registro Único de Víctimas: dyjp-uwwh, m64i-rnss, krnc-8azs y 9qih-4vkc [Conjuntos de datos]. datos.gov.co. https://www.datos.gov.co/" data-busca="unidad para la atención y reparación integral a las víctimas. (2024–2026). conjuntos de datos abiertos del registro único de víctimas: dyjp-uwwh, m64i-rnss, krnc-8azs y 9qih-4vkc [conjuntos de datos]. datos.gov.co. https://www.datos.gov.co/ incorporación nueva. las tablas publicadas apilan cortes mensuales sucesivos, de modo que permiten reconstruir la historia del registro. las columnas vienen en texto: hay que sumar con conversión explícita y fijar siempre el límite de filas. no existe en abierto la combinación municipio × año × hecho. datos.gov.co">
+      <button class="copiar" title="Copiar esta referencia">copiar</button>
+      <div class="entry-meta"><span class="tag">datos.gov.co</span><span class="tag tag-nueva">2026-II</span></div>
+      <p class="apa">Unidad para la Atención y Reparación Integral a las Víctimas. (2024–2026). <em>Conjuntos de datos abiertos del Registro Único de Víctimas: dyjp-uwwh, m64i-rnss, krnc-8azs y 9qih-4vkc</em> [Conjuntos de datos]. datos.gov.co. https://www.datos.gov.co/</p>
+      <p class="note"><strong>Incorporación nueva.</strong> Las tablas publicadas apilan cortes mensuales sucesivos, de modo que permiten reconstruir la historia del registro. Las columnas vienen en texto: hay que sumar con conversión explícita y fijar siempre el límite de filas. No existe en abierto la combinación municipio × año × hecho.</p>
+    </article>
+  </div>
+  <div class="group">
+    <div class="group-title">Fuentes complementarias del DANE</div>
+    <article class="entry" data-esen="1" data-nueva="1" data-apa="Departamento Administrativo Nacional de Estadística. (2023). Proyecciones y retroproyecciones de población nacional, departamental y municipal, 1950–2070 [Conjuntos de datos]. DANE. https://www.dane.gov.co/" data-busca="departamento administrativo nacional de estadística. (2023). proyecciones y retroproyecciones de población nacional, departamental y municipal, 1950–2070 [conjuntos de datos]. dane. https://www.dane.gov.co/ incorporación nueva. sin población no hay tasas, y sin tasas no se pueden comparar territorios de tamaño incomparable. es el insumo que habilita el corte transversal territorial y los modelos con desplazamiento por exposición. dane · población">
+      <button class="copiar" title="Copiar esta referencia">copiar</button>
+      <div class="entry-meta"><span class="tag">DANE · población</span><span class="tag tag-esen">Esencial</span><span class="tag tag-nueva">2026-II</span></div>
+      <p class="apa">Departamento Administrativo Nacional de Estadística. (2023). <em>Proyecciones y retroproyecciones de población nacional, departamental y municipal, 1950–2070</em> [Conjuntos de datos]. DANE. https://www.dane.gov.co/</p>
+      <p class="note"><strong>Incorporación nueva.</strong> Sin población no hay tasas, y sin tasas no se pueden comparar territorios de tamaño incomparable. Es el insumo que habilita el corte transversal territorial y los modelos con desplazamiento por exposición.</p>
+    </article>
+    <article class="entry" data-esen="0" data-nueva="1" data-apa="Departamento Administrativo Nacional de Estadística. (2026). Divipola: Codificación de la división político-administrativa de Colombia [Conjunto de datos]. DANE. https://www.dane.gov.co/" data-busca="departamento administrativo nacional de estadística. (2026). divipola: codificación de la división político-administrativa de colombia [conjunto de datos]. dane. https://www.dane.gov.co/ incorporación nueva. necesaria en versión histórica: el proyecto encontró códigos municipales absorbidos (santa rita y san josé de ocuné en vichada) y un municipio creado en 2023 (nuevo belén de bajirá) que no pertenece a ninguna dirección territorial. dane · divipola">
+      <button class="copiar" title="Copiar esta referencia">copiar</button>
+      <div class="entry-meta"><span class="tag">DANE · Divipola</span><span class="tag tag-nueva">2026-II</span></div>
+      <p class="apa">Departamento Administrativo Nacional de Estadística. (2026). <em>Divipola: Codificación de la división político-administrativa de Colombia</em> [Conjunto de datos]. DANE. https://www.dane.gov.co/</p>
+      <p class="note"><strong>Incorporación nueva.</strong> Necesaria en versión histórica: el proyecto encontró códigos municipales absorbidos (Santa Rita y San José de Ocuné en Vichada) y un municipio creado en 2023 (Nuevo Belén de Bajirá) que no pertenece a ninguna dirección territorial.</p>
+    </article>
+  </div>
+  </div>
+</section>
+<section class="section" id="sec-series">
+  <button class="section-header" aria-expanded="true"><span class="flecha">&#9660;</span><span>VI. Series de tiempo, quiebres estructurales e inferencia causal</span><span class="n">13 referencias</span></button>
+  <div class="section-sub">Entrega de Regresiones lineales — incorporación de 2026-II</div>
+  <div class="cuerpo">
+  <div class="group">
+    <div class="group-title">Series de tiempo interrumpidas e inferencia robusta</div>
+    <article class="entry" data-esen="1" data-nueva="1" data-apa="Bernal, J. L., Cummins, S., y Gasparrini, A. (2017). Interrupted time series regression for the evaluation of public health interventions: A tutorial. International Journal of Epidemiology, 46(1), 348–355." data-busca="bernal, j. l., cummins, s., y gasparrini, a. (2017). interrupted time series regression for the evaluation of public health interventions: a tutorial. international journal of epidemiology, 46(1), 348–355. incorporación nueva. el tutorial estándar del método con el que se estima el salto de nivel y el cambio de pendiente asociados al acuerdo de 2016. es también la referencia que advierte sobre la autocorrelación residual, el problema que invalidó la primera especificación del proyecto sobre la ventana 1986–2024. its">
+      <button class="copiar" title="Copiar esta referencia">copiar</button>
+      <div class="entry-meta"><span class="tag">ITS</span><span class="tag tag-esen">Esencial</span><span class="tag tag-nueva">2026-II</span></div>
+      <p class="apa">Bernal, J. L., Cummins, S., y Gasparrini, A. (2017). Interrupted time series regression for the evaluation of public health interventions: A tutorial. <em>International Journal of Epidemiology</em>, <em>46</em>(1), 348–355.</p>
+      <p class="note"><strong>Incorporación nueva.</strong> El tutorial estándar del método con el que se estima el salto de nivel y el cambio de pendiente asociados al Acuerdo de 2016. Es también la referencia que advierte sobre la autocorrelación residual, el problema que invalidó la primera especificación del proyecto sobre la ventana 1986–2024.</p>
+    </article>
+    <article class="entry" data-esen="1" data-nueva="1" data-apa="Newey, W. K., y West, K. D. (1987). A simple, positive semi-definite, heteroskedasticity and autocorrelation consistent covariance matrix. Econometrica, 55(3), 703–708." data-busca="newey, w. k., y west, k. d. (1987). a simple, positive semi-definite, heteroskedasticity and autocorrelation consistent covariance matrix. econometrica, 55(3), 703–708. incorporación nueva. los errores estándar robustos a heterocedasticidad y autocorrelación con los que se reportan los intervalos de la serie interrumpida. newey y west">
+      <button class="copiar" title="Copiar esta referencia">copiar</button>
+      <div class="entry-meta"><span class="tag">Newey y West</span><span class="tag tag-esen">Esencial</span><span class="tag tag-nueva">2026-II</span></div>
+      <p class="apa">Newey, W. K., y West, K. D. (1987). A simple, positive semi-definite, heteroskedasticity and autocorrelation consistent covariance matrix. <em>Econometrica</em>, <em>55</em>(3), 703–708.</p>
+      <p class="note"><strong>Incorporación nueva.</strong> Los errores estándar robustos a heterocedasticidad y autocorrelación con los que se reportan los intervalos de la serie interrumpida.</p>
+    </article>
+    <article class="entry" data-esen="0" data-nueva="1" data-apa="Künsch, H. R. (1989). The jackknife and the bootstrap for general stationary observations. The Annals of Statistics, 17(3), 1217–1241." data-busca="künsch, h. r. (1989). the jackknife and the bootstrap for general stationary observations. the annals of statistics, 17(3), 1217–1241. incorporación nueva. el remuestreo por bloques que conserva la dependencia temporal. es el procedimiento con que se obtiene el intervalo del salto de nivel, [−59,3; −25,6]. künsch · bootstrap">
+      <button class="copiar" title="Copiar esta referencia">copiar</button>
+      <div class="entry-meta"><span class="tag">Künsch · bootstrap</span><span class="tag tag-nueva">2026-II</span></div>
+      <p class="apa">Künsch, H. R. (1989). The jackknife and the bootstrap for general stationary observations. <em>The Annals of Statistics</em>, <em>17</em>(3), 1217–1241.</p>
+      <p class="note"><strong>Incorporación nueva.</strong> El remuestreo por bloques que conserva la dependencia temporal. Es el procedimiento con que se obtiene el intervalo del salto de nivel, [−59,3; −25,6].</p>
+    </article>
+    <article class="entry" data-esen="1" data-nueva="1" data-apa="Bai, J., y Perron, P. (2003). Computation and analysis of multiple structural change models. Journal of Applied Econometrics, 18(1), 1–22." data-busca="bai, j., y perron, p. (2003). computation and analysis of multiple structural change models. journal of applied econometrics, 18(1), 1–22. incorporación nueva. la búsqueda exhaustiva de quiebres múltiples. el proyecto la usa para mostrar que los quiebres de la serie nacional son 1993, 2003 y 2016, y que 2010 no aparece, lo que pone la evidencia en contra de la hipótesis de desescalamiento durante la negociación. bai y perron">
+      <button class="copiar" title="Copiar esta referencia">copiar</button>
+      <div class="entry-meta"><span class="tag">Bai y Perron</span><span class="tag tag-esen">Esencial</span><span class="tag tag-nueva">2026-II</span></div>
+      <p class="apa">Bai, J., y Perron, P. (2003). Computation and analysis of multiple structural change models. <em>Journal of Applied Econometrics</em>, <em>18</em>(1), 1–22.</p>
+      <p class="note"><strong>Incorporación nueva.</strong> La búsqueda exhaustiva de quiebres múltiples. El proyecto la usa para mostrar que los quiebres de la serie nacional son 1993, 2003 y 2016, y que 2010 no aparece, lo que pone la evidencia en contra de la hipótesis de desescalamiento durante la negociación.</p>
+    </article>
+  </div>
+  <div class="group">
+    <div class="group-title">Estacionariedad, conteos y estructura jerárquica</div>
+    <article class="entry" data-esen="0" data-nueva="1" data-apa="Dickey, D. A., y Fuller, W. A. (1979). Distribution of the estimators for autoregressive time series with a unit root. Journal of the American Statistical Association, 74(366), 427–431." data-busca="dickey, d. a., y fuller, w. a. (1979). distribution of the estimators for autoregressive time series with a unit root. journal of the american statistical association, 74(366), 427–431. incorporación nueva. prueba de raíz unitaria. reportada junto con kpss: la serie nacional no es estacionaria en niveles y sí lo es en diferencias. dickey y fuller">
+      <button class="copiar" title="Copiar esta referencia">copiar</button>
+      <div class="entry-meta"><span class="tag">Dickey y Fuller</span><span class="tag tag-nueva">2026-II</span></div>
+      <p class="apa">Dickey, D. A., y Fuller, W. A. (1979). Distribution of the estimators for autoregressive time series with a unit root. <em>Journal of the American Statistical Association</em>, <em>74</em>(366), 427–431.</p>
+      <p class="note"><strong>Incorporación nueva.</strong> Prueba de raíz unitaria. Reportada junto con KPSS: la serie nacional no es estacionaria en niveles y sí lo es en diferencias.</p>
+    </article>
+    <article class="entry" data-esen="0" data-nueva="1" data-apa="Kwiatkowski, D., Phillips, P. C. B., Schmidt, P., y Shin, Y. (1992). Testing the null hypothesis of stationarity against the alternative of a unit root. Journal of Econometrics, 54(1–3), 159–178." data-busca="kwiatkowski, d., phillips, p. c. b., schmidt, p., y shin, y. (1992). testing the null hypothesis of stationarity against the alternative of a unit root. journal of econometrics, 54(1–3), 159–178. incorporación nueva. prueba con hipótesis nula invertida respecto de dickey-fuller. usarlas en pareja es lo que permite concluir y no solo no rechazar. kpss">
+      <button class="copiar" title="Copiar esta referencia">copiar</button>
+      <div class="entry-meta"><span class="tag">KPSS</span><span class="tag tag-nueva">2026-II</span></div>
+      <p class="apa">Kwiatkowski, D., Phillips, P. C. B., Schmidt, P., y Shin, Y. (1992). Testing the null hypothesis of stationarity against the alternative of a unit root. <em>Journal of Econometrics</em>, <em>54</em>(1–3), 159–178.</p>
+      <p class="note"><strong>Incorporación nueva.</strong> Prueba con hipótesis nula invertida respecto de Dickey-Fuller. Usarlas en pareja es lo que permite concluir y no solo no rechazar.</p>
+    </article>
+    <article class="entry" data-esen="0" data-nueva="1" data-apa="Durbin, J., y Watson, G. S. (1951). Testing for serial correlation in least squares regression. II. Biometrika, 38(1–2), 159–177." data-busca="durbin, j., y watson, g. s. (1951). testing for serial correlation in least squares regression. ii. biometrika, 38(1–2), 159–177. incorporación nueva. el estadístico que delató el problema: 0,306 en la especificación ingenua de la ventana larga frente a 1,46 en la ventana corregida. la diferencia de 36 puntos porcentuales en el salto estimado viene de la ventana, no del estimador. durbin y watson">
+      <button class="copiar" title="Copiar esta referencia">copiar</button>
+      <div class="entry-meta"><span class="tag">Durbin y Watson</span><span class="tag tag-nueva">2026-II</span></div>
+      <p class="apa">Durbin, J., y Watson, G. S. (1951). Testing for serial correlation in least squares regression. II. <em>Biometrika</em>, <em>38</em>(1–2), 159–177.</p>
+      <p class="note"><strong>Incorporación nueva.</strong> El estadístico que delató el problema: 0,306 en la especificación ingenua de la ventana larga frente a 1,46 en la ventana corregida. La diferencia de 36 puntos porcentuales en el salto estimado viene de la ventana, no del estimador.</p>
+    </article>
+    <article class="entry" data-esen="1" data-nueva="1" data-apa="Cameron, A. C., y Trivedi, P. K. (2013). Regression analysis of count data (2.ª ed.). Cambridge University Press." data-busca="cameron, a. c., y trivedi, p. k. (2013). regression analysis of count data (2.ª ed.). cambridge university press. incorporación nueva. referencia para el paso de poisson a binomial negativa ante sobredispersión, y para el uso de desplazamiento por exposición. en el proyecto la dispersión estimada fue de 12.072, que es la justificación cuantitativa del cambio de familia. cameron y trivedi">
+      <button class="copiar" title="Copiar esta referencia">copiar</button>
+      <div class="entry-meta"><span class="tag">Cameron y Trivedi</span><span class="tag tag-esen">Esencial</span><span class="tag tag-nueva">2026-II</span></div>
+      <p class="apa">Cameron, A. C., y Trivedi, P. K. (2013). <em>Regression analysis of count data</em> (2.ª ed.). Cambridge University Press.</p>
+      <p class="note"><strong>Incorporación nueva.</strong> Referencia para el paso de Poisson a binomial negativa ante sobredispersión, y para el uso de desplazamiento por exposición. En el proyecto la dispersión estimada fue de 12.072, que es la justificación cuantitativa del cambio de familia.</p>
+    </article>
+    <article class="entry" data-esen="0" data-nueva="1" data-apa="Gelman, A., y Hill, J. (2007). Data analysis using regression and multilevel/hierarchical models. Cambridge University Press." data-busca="gelman, a., y hill, j. (2007). data analysis using regression and multilevel/hierarchical models. cambridge university press. incorporación nueva. modelos mixtos y correlación intraclase. sostiene el modelo con pendientes por hecho victimizante y la lectura del icc de 0,738. gelman y hill">
+      <button class="copiar" title="Copiar esta referencia">copiar</button>
+      <div class="entry-meta"><span class="tag">Gelman y Hill</span><span class="tag tag-nueva">2026-II</span></div>
+      <p class="apa">Gelman, A., y Hill, J. (2007). <em>Data analysis using regression and multilevel/hierarchical models</em>. Cambridge University Press.</p>
+      <p class="note"><strong>Incorporación nueva.</strong> Modelos mixtos y correlación intraclase. Sostiene el modelo con pendientes por hecho victimizante y la lectura del ICC de 0,738.</p>
+    </article>
+    <article class="entry" data-esen="1" data-nueva="1" data-apa="Benjamini, Y., y Hochberg, Y. (1995). Controlling the false discovery rate: A practical and powerful approach to multiple testing. Journal of the Royal Statistical Society: Series B, 57(1), 289–300." data-busca="benjamini, y., y hochberg, y. (1995). controlling the false discovery rate: a practical and powerful approach to multiple testing. journal of the royal statistical society: series b, 57(1), 289–300. incorporación nueva. control de la tasa de falsos descubrimientos. es la corrección aplicada al contrastar los catorce hechos victimizantes, tras la cual sobreviven ocho. benjamini y hochberg">
+      <button class="copiar" title="Copiar esta referencia">copiar</button>
+      <div class="entry-meta"><span class="tag">Benjamini y Hochberg</span><span class="tag tag-esen">Esencial</span><span class="tag tag-nueva">2026-II</span></div>
+      <p class="apa">Benjamini, Y., y Hochberg, Y. (1995). Controlling the false discovery rate: A practical and powerful approach to multiple testing. <em>Journal of the Royal Statistical Society: Series B</em>, <em>57</em>(1), 289–300.</p>
+      <p class="note"><strong>Incorporación nueva.</strong> Control de la tasa de falsos descubrimientos. Es la corrección aplicada al contrastar los catorce hechos victimizantes, tras la cual sobreviven ocho.</p>
+    </article>
+  </div>
+  <div class="group">
+    <div class="group-title">Diseños contrafactuales</div>
+    <article class="entry" data-esen="1" data-nueva="1" data-apa="Abadie, A., Diamond, A., y Hainmueller, J. (2010). Synthetic control methods for comparative case studies: Estimating the effect of California&#x27;s tobacco control program. Journal of the American Statistical Association, 105(490), 493–505." data-busca="abadie, a., diamond, a., y hainmueller, j. (2010). synthetic control methods for comparative case studies: estimating the effect of california&#x27;s tobacco control program. journal of the american statistical association, 105(490), 493–505. incorporación nueva. el control sintético. su exigencia central —que el contrafactual se construya con unidades donantes reales— es el argumento por el que el proyecto rechaza el contrafactual nacional y se desplaza al panel departamental. abadie et al.">
+      <button class="copiar" title="Copiar esta referencia">copiar</button>
+      <div class="entry-meta"><span class="tag">Abadie et al.</span><span class="tag tag-esen">Esencial</span><span class="tag tag-nueva">2026-II</span></div>
+      <p class="apa">Abadie, A., Diamond, A., y Hainmueller, J. (2010). Synthetic control methods for comparative case studies: Estimating the effect of California's tobacco control program. <em>Journal of the American Statistical Association</em>, <em>105</em>(490), 493–505.</p>
+      <p class="note"><strong>Incorporación nueva.</strong> El control sintético. Su exigencia central —que el contrafactual se construya con unidades donantes reales— es el argumento por el que el proyecto rechaza el contrafactual nacional y se desplaza al panel departamental.</p>
+    </article>
+    <article class="entry" data-esen="1" data-nueva="1" data-apa="Callaway, B., y Sant&#x27;Anna, P. H. C. (2021). Difference-in-differences with multiple time periods. Journal of Econometrics, 225(2), 200–230." data-busca="callaway, b., y sant&#x27;anna, p. h. c. (2021). difference-in-differences with multiple time periods. journal of econometrics, 225(2), 200–230. incorporación nueva. estimador para adopción escalonada del tratamiento. es la vía prevista para el diseño territorial con exposición diferencial al proceso con las farc-ep. callaway y sant&#x27;anna">
+      <button class="copiar" title="Copiar esta referencia">copiar</button>
+      <div class="entry-meta"><span class="tag">Callaway y Sant&#x27;Anna</span><span class="tag tag-esen">Esencial</span><span class="tag tag-nueva">2026-II</span></div>
+      <p class="apa">Callaway, B., y Sant'Anna, P. H. C. (2021). Difference-in-differences with multiple time periods. <em>Journal of Econometrics</em>, <em>225</em>(2), 200–230.</p>
+      <p class="note"><strong>Incorporación nueva.</strong> Estimador para adopción escalonada del tratamiento. Es la vía prevista para el diseño territorial con exposición diferencial al proceso con las FARC-EP.</p>
+    </article>
+    <article class="entry" data-esen="0" data-nueva="1" data-apa="Angrist, J. D., y Pischke, J.-S. (2009). Mostly harmless econometrics: An empiricist&#x27;s companion. Princeton University Press." data-busca="angrist, j. d., y pischke, j.-s. (2009). mostly harmless econometrics: an empiricist&#x27;s companion. princeton university press. incorporación nueva. referencia general sobre identificación. útil para argumentar por qué cambiar de estimador no cambia de pregunta, que es la regla que gobierna la arquitectura de las tres entregas. angrist y pischke">
+      <button class="copiar" title="Copiar esta referencia">copiar</button>
+      <div class="entry-meta"><span class="tag">Angrist y Pischke</span><span class="tag tag-nueva">2026-II</span></div>
+      <p class="apa">Angrist, J. D., y Pischke, J.-S. (2009). <em>Mostly harmless econometrics: An empiricist's companion</em>. Princeton University Press.</p>
+      <p class="note"><strong>Incorporación nueva.</strong> Referencia general sobre identificación. Útil para argumentar por qué cambiar de estimador no cambia de pregunta, que es la regla que gobierna la arquitectura de las tres entregas.</p>
+    </article>
+  </div>
+  </div>
+</section>
+<section class="section" id="sec-ml">
+  <button class="section-header" aria-expanded="true"><span class="flecha">&#9660;</span><span>VII. Aprendizaje automático, pronóstico y detección</span><span class="n">17 referencias</span></button>
+  <div class="section-sub">Entregas de Analítica Predictiva y Machine Learning — incorporación de 2026-II</div>
+  <div class="cuerpo">
+  <div class="group">
+    <div class="group-title">Árboles, potenciación y detección de anomalías</div>
+    <article class="entry" data-esen="1" data-nueva="1" data-apa="Breiman, L. (2001). Random forests. Machine Learning, 45(1), 5–32." data-busca="breiman, l. (2001). random forests. machine learning, 45(1), 5–32. incorporación nueva. el bosque aleatorio, que en la capa predictiva empata con la persistencia y entra en la combinación final con peso de 0,5 fijado por validación cruzada. breiman">
+      <button class="copiar" title="Copiar esta referencia">copiar</button>
+      <div class="entry-meta"><span class="tag">Breiman</span><span class="tag tag-esen">Esencial</span><span class="tag tag-nueva">2026-II</span></div>
+      <p class="apa">Breiman, L. (2001). Random forests. <em>Machine Learning</em>, <em>45</em>(1), 5–32.</p>
+      <p class="note"><strong>Incorporación nueva.</strong> El bosque aleatorio, que en la capa predictiva empata con la persistencia y entra en la combinación final con peso de 0,5 fijado por validación cruzada.</p>
+    </article>
+    <article class="entry" data-esen="1" data-nueva="1" data-apa="Chen, T., y Guestrin, C. (2016). XGBoost: A scalable tree boosting system. En Proceedings of the 22nd ACM SIGKDD International Conference on Knowledge Discovery and Data Mining (pp. 785–794). ACM." data-busca="chen, t., y guestrin, c. (2016). xgboost: a scalable tree boosting system. en proceedings of the 22nd acm sigkdd international conference on knowledge discovery and data mining (pp. 785–794). acm. incorporación nueva. se usa por sus funciones objetivo de conteo, poisson y tweedie, que permiten comparar un modelo único frente al modelo en dos partes. no por una competencia entre bibliotecas, que sobre estos datos no sería un resultado. chen y guestrin">
+      <button class="copiar" title="Copiar esta referencia">copiar</button>
+      <div class="entry-meta"><span class="tag">Chen y Guestrin</span><span class="tag tag-esen">Esencial</span><span class="tag tag-nueva">2026-II</span></div>
+      <p class="apa">Chen, T., y Guestrin, C. (2016). XGBoost: A scalable tree boosting system. En <em>Proceedings of the 22nd ACM SIGKDD International Conference on Knowledge Discovery and Data Mining</em> (pp. 785–794). ACM.</p>
+      <p class="note"><strong>Incorporación nueva.</strong> Se usa por sus funciones objetivo de conteo, Poisson y Tweedie, que permiten comparar un modelo único frente al modelo en dos partes. No por una competencia entre bibliotecas, que sobre estos datos no sería un resultado.</p>
+    </article>
+    <article class="entry" data-esen="0" data-nueva="1" data-apa="Ke, G., Meng, Q., Finley, T., Wang, T., Chen, W., Ma, W., Ye, Q., y Liu, T.-Y. (2017). LightGBM: A highly efficient gradient boosting decision tree. En Advances in Neural Information Processing Systems 30 (pp. 3146–3154). Curran Associates." data-busca="ke, g., meng, q., finley, t., wang, t., chen, w., ma, w., ye, q., y liu, t.-y. (2017). lightgbm: a highly efficient gradient boosting decision tree. en advances in neural information processing systems 30 (pp. 3146–3154). curran associates. incorporación nueva. elegido por sus restricciones de monotonía, que permiten imponer que más registro pasado no prediga menos registro futuro. su riesgo en este panel es el crecimiento por hojas sobre celdas municipales diminutas. ke et al.">
+      <button class="copiar" title="Copiar esta referencia">copiar</button>
+      <div class="entry-meta"><span class="tag">Ke et al.</span><span class="tag tag-nueva">2026-II</span></div>
+      <p class="apa">Ke, G., Meng, Q., Finley, T., Wang, T., Chen, W., Ma, W., Ye, Q., y Liu, T.-Y. (2017). LightGBM: A highly efficient gradient boosting decision tree. En <em>Advances in Neural Information Processing Systems 30</em> (pp. 3146–3154). Curran Associates.</p>
+      <p class="note"><strong>Incorporación nueva.</strong> Elegido por sus restricciones de monotonía, que permiten imponer que más registro pasado no prediga menos registro futuro. Su riesgo en este panel es el crecimiento por hojas sobre celdas municipales diminutas.</p>
+    </article>
+    <article class="entry" data-esen="0" data-nueva="1" data-apa="Prokhorenkova, L., Gusev, G., Vorobev, A., Dorogush, A. V., y Gulin, A. (2018). CatBoost: Unbiased boosting with categorical features. En Advances in Neural Information Processing Systems 31 (pp. 6638–6648). Curran Associates." data-busca="prokhorenkova, l., gusev, g., vorobev, a., dorogush, a. v., y gulin, a. (2018). catboost: unbiased boosting with categorical features. en advances in neural information processing systems 31 (pp. 6638–6648). curran associates. incorporación nueva. es la biblioteca con la justificación más fuerte en este proyecto: la potenciación ordenada está diseñada contra la filtración de información del futuro al codificar categóricas de alta cardinalidad, y aquí hay 1.125 códigos municipales. prokhorenkova et al.">
+      <button class="copiar" title="Copiar esta referencia">copiar</button>
+      <div class="entry-meta"><span class="tag">Prokhorenkova et al.</span><span class="tag tag-nueva">2026-II</span></div>
+      <p class="apa">Prokhorenkova, L., Gusev, G., Vorobev, A., Dorogush, A. V., y Gulin, A. (2018). CatBoost: Unbiased boosting with categorical features. En <em>Advances in Neural Information Processing Systems 31</em> (pp. 6638–6648). Curran Associates.</p>
+      <p class="note"><strong>Incorporación nueva.</strong> Es la biblioteca con la justificación más fuerte en este proyecto: la potenciación ordenada está diseñada contra la filtración de información del futuro al codificar categóricas de alta cardinalidad, y aquí hay 1.125 códigos municipales.</p>
+    </article>
+    <article class="entry" data-esen="0" data-nueva="1" data-apa="Liu, F. T., Ting, K. M., y Zhou, Z.-H. (2008). Isolation forest. En Proceedings of the 8th IEEE International Conference on Data Mining (pp. 413–422). IEEE." data-busca="liu, f. t., ting, k. m., y zhou, z.-h. (2008). isolation forest. en proceedings of the 8th ieee international conference on data mining (pp. 413–422). ieee. incorporación nueva. detección de anomalías sin etiquetas. en el proyecto los errores del detector se leen como silencios del registro, no como fallos del modelo. liu et al.">
+      <button class="copiar" title="Copiar esta referencia">copiar</button>
+      <div class="entry-meta"><span class="tag">Liu et al.</span><span class="tag tag-nueva">2026-II</span></div>
+      <p class="apa">Liu, F. T., Ting, K. M., y Zhou, Z.-H. (2008). Isolation forest. En <em>Proceedings of the 8th IEEE International Conference on Data Mining</em> (pp. 413–422). IEEE.</p>
+      <p class="note"><strong>Incorporación nueva.</strong> Detección de anomalías sin etiquetas. En el proyecto los errores del detector se leen como silencios del registro, no como fallos del modelo.</p>
+    </article>
+    <article class="entry" data-esen="1" data-nueva="1" data-apa="Hastie, T., Tibshirani, R., y Friedman, J. (2009). The elements of statistical learning: Data mining, inference, and prediction (2.ª ed.). Springer." data-busca="hastie, t., tibshirani, r., y friedman, j. (2009). the elements of statistical learning: data mining, inference, and prediction (2.ª ed.). springer. incorporación nueva. referencia de fondo para el compromiso sesgo-varianza, la regularización y la validación. complementa a islr, que ya estaba en la bibliografía de la fase descriptiva. hastie et al.">
+      <button class="copiar" title="Copiar esta referencia">copiar</button>
+      <div class="entry-meta"><span class="tag">Hastie et al.</span><span class="tag tag-esen">Esencial</span><span class="tag tag-nueva">2026-II</span></div>
+      <p class="apa">Hastie, T., Tibshirani, R., y Friedman, J. (2009). <em>The elements of statistical learning: Data mining, inference, and prediction</em> (2.ª ed.). Springer.</p>
+      <p class="note"><strong>Incorporación nueva.</strong> Referencia de fondo para el compromiso sesgo-varianza, la regularización y la validación. Complementa a ISLR, que ya estaba en la bibliografía de la fase descriptiva.</p>
+    </article>
+    <article class="entry" data-esen="0" data-nueva="1" data-apa="Lundberg, S. M., y Lee, S.-I. (2017). A unified approach to interpreting model predictions. En Advances in Neural Information Processing Systems 30 (pp. 4765–4774). Curran Associates." data-busca="lundberg, s. m., y lee, s.-i. (2017). a unified approach to interpreting model predictions. en advances in neural information processing systems 30 (pp. 4765–4774). curran associates. incorporación nueva. valores de shapley para importancia de variables. se usan junto con la importancia por permutación, nunca con la importancia por ganancia, que está sesgada hacia las variables de alta cardinalidad. lundberg y lee">
+      <button class="copiar" title="Copiar esta referencia">copiar</button>
+      <div class="entry-meta"><span class="tag">Lundberg y Lee</span><span class="tag tag-nueva">2026-II</span></div>
+      <p class="apa">Lundberg, S. M., y Lee, S.-I. (2017). A unified approach to interpreting model predictions. En <em>Advances in Neural Information Processing Systems 30</em> (pp. 4765–4774). Curran Associates.</p>
+      <p class="note"><strong>Incorporación nueva.</strong> Valores de Shapley para importancia de variables. Se usan junto con la importancia por permutación, nunca con la importancia por ganancia, que está sesgada hacia las variables de alta cardinalidad.</p>
+    </article>
+  </div>
+  <div class="group">
+    <div class="group-title">Pronóstico, validación y medida del error</div>
+    <article class="entry" data-esen="1" data-nueva="1" data-apa="Hyndman, R. J., y Athanasopoulos, G. (2021). Forecasting: Principles and practice (3.ª ed.). OTexts. https://otexts.com/fpp3/" data-busca="hyndman, r. j., y athanasopoulos, g. (2021). forecasting: principles and practice (3.ª ed.). otexts. https://otexts.com/fpp3/ incorporación nueva. manual de referencia del pronóstico. de aquí viene la regla que organiza la entrega de analítica predictiva: todo modelo se compara contra una línea base ingenua, y un modelo que no le gana a la persistencia no es un modelo mejor. hyndman y athanasopoulos">
+      <button class="copiar" title="Copiar esta referencia">copiar</button>
+      <div class="entry-meta"><span class="tag">Hyndman y Athanasopoulos</span><span class="tag tag-esen">Esencial</span><span class="tag tag-nueva">2026-II</span></div>
+      <p class="apa">Hyndman, R. J., y Athanasopoulos, G. (2021). <em>Forecasting: Principles and practice</em> (3.ª ed.). OTexts. https://otexts.com/fpp3/</p>
+      <p class="note"><strong>Incorporación nueva.</strong> Manual de referencia del pronóstico. De aquí viene la regla que organiza la entrega de Analítica Predictiva: todo modelo se compara contra una línea base ingenua, y un modelo que no le gana a la persistencia no es un modelo mejor.</p>
+    </article>
+    <article class="entry" data-esen="0" data-nueva="1" data-apa="Hyndman, R. J., y Koehler, A. B. (2006). Another look at measures of forecast accuracy. International Journal of Forecasting, 22(4), 679–688." data-busca="hyndman, r. j., y koehler, a. b. (2006). another look at measures of forecast accuracy. international journal of forecasting, 22(4), 679–688. incorporación nueva. justifica el uso del error porcentual absoluto ponderado en lugar del error porcentual medio, que es inestable cuando hay celdas con valores cercanos a cero: aquí el 32,0 % de las celdas vale uno. hyndman y koehler">
+      <button class="copiar" title="Copiar esta referencia">copiar</button>
+      <div class="entry-meta"><span class="tag">Hyndman y Koehler</span><span class="tag tag-nueva">2026-II</span></div>
+      <p class="apa">Hyndman, R. J., y Koehler, A. B. (2006). Another look at measures of forecast accuracy. <em>International Journal of Forecasting</em>, <em>22</em>(4), 679–688.</p>
+      <p class="note"><strong>Incorporación nueva.</strong> Justifica el uso del error porcentual absoluto ponderado en lugar del error porcentual medio, que es inestable cuando hay celdas con valores cercanos a cero: aquí el 32,0 % de las celdas vale uno.</p>
+    </article>
+    <article class="entry" data-esen="0" data-nueva="1" data-apa="Bergmeir, C., y Benítez, J. M. (2012). On the use of cross-validation for time series predictor evaluation. Information Sciences, 191, 192–213." data-busca="bergmeir, c., y benítez, j. m. (2012). on the use of cross-validation for time series predictor evaluation. information sciences, 191, 192–213. incorporación nueva. fundamenta la validación con ventana expansiva en lugar de la partición aleatoria. es la regla no negociable de las dos entregas predictivas. bergmeir y benítez">
+      <button class="copiar" title="Copiar esta referencia">copiar</button>
+      <div class="entry-meta"><span class="tag">Bergmeir y Benítez</span><span class="tag tag-nueva">2026-II</span></div>
+      <p class="apa">Bergmeir, C., y Benítez, J. M. (2012). On the use of cross-validation for time series predictor evaluation. <em>Information Sciences</em>, <em>191</em>, 192–213.</p>
+      <p class="note"><strong>Incorporación nueva.</strong> Fundamenta la validación con ventana expansiva en lugar de la partición aleatoria. Es la regla no negociable de las dos entregas predictivas.</p>
+    </article>
+    <article class="entry" data-esen="0" data-nueva="1" data-apa="Davis, J., y Goadrich, M. (2006). The relationship between precision-recall and ROC curves. En Proceedings of the 23rd International Conference on Machine Learning (pp. 233–240). ACM." data-busca="davis, j., y goadrich, m. (2006). the relationship between precision-recall and roc curves. en proceedings of the 23rd international conference on machine learning (pp. 233–240). acm. incorporación nueva. por qué, con clases muy desbalanceadas, el área bajo la curva de precisión y exhaustividad informa más que el área bajo la curva roc. davis y goadrich">
+      <button class="copiar" title="Copiar esta referencia">copiar</button>
+      <div class="entry-meta"><span class="tag">Davis y Goadrich</span><span class="tag tag-nueva">2026-II</span></div>
+      <p class="apa">Davis, J., y Goadrich, M. (2006). The relationship between precision-recall and ROC curves. En <em>Proceedings of the 23rd International Conference on Machine Learning</em> (pp. 233–240). ACM.</p>
+      <p class="note"><strong>Incorporación nueva.</strong> Por qué, con clases muy desbalanceadas, el área bajo la curva de precisión y exhaustividad informa más que el área bajo la curva ROC.</p>
+    </article>
+    <article class="entry" data-esen="0" data-nueva="1" data-apa="Nagin, D. S. (2005). Group-based modeling of development. Harvard University Press." data-busca="nagin, d. s. (2005). group-based modeling of development. harvard university press. incorporación nueva. modelos de trayectorias por grupos latentes con verosimilitud de conteo. es la forma correcta de la idea de agrupar departamentos por forma de trayectoria, frente a una mezcla gaussiana sobre conteos crudos, que capturaría la asimetría de la distribución y no grupos sustantivos. nagin">
+      <button class="copiar" title="Copiar esta referencia">copiar</button>
+      <div class="entry-meta"><span class="tag">Nagin</span><span class="tag tag-nueva">2026-II</span></div>
+      <p class="apa">Nagin, D. S. (2005). <em>Group-based modeling of development</em>. Harvard University Press.</p>
+      <p class="note"><strong>Incorporación nueva.</strong> Modelos de trayectorias por grupos latentes con verosimilitud de conteo. Es la forma correcta de la idea de agrupar departamentos por forma de trayectoria, frente a una mezcla gaussiana sobre conteos crudos, que capturaría la asimetría de la distribución y no grupos sustantivos.</p>
+    </article>
+    <article class="entry" data-esen="0" data-nueva="1" data-apa="England, P. D., y Verrall, R. J. (2002). Stochastic claims reserving in general insurance. British Actuarial Journal, 8(3), 443–518." data-busca="england, p. d., y verrall, r. j. (2002). stochastic claims reserving in general insurance. british actuarial journal, 8(3), 443–518. incorporación nueva. el marco estocástico del método de triángulos de desarrollo. es el modelo que el proyecto adopta para el rezago de inscripción: la analogía con la siniestralidad declarada pero no reportada es exacta. england y verrall">
+      <button class="copiar" title="Copiar esta referencia">copiar</button>
+      <div class="entry-meta"><span class="tag">England y Verrall</span><span class="tag tag-nueva">2026-II</span></div>
+      <p class="apa">England, P. D., y Verrall, R. J. (2002). Stochastic claims reserving in general insurance. <em>British Actuarial Journal</em>, <em>8</em>(3), 443–518.</p>
+      <p class="note"><strong>Incorporación nueva.</strong> El marco estocástico del método de triángulos de desarrollo. Es el modelo que el proyecto adopta para el rezago de inscripción: la analogía con la siniestralidad declarada pero no reportada es exacta.</p>
+    </article>
+    <article class="entry" data-esen="0" data-nueva="1" data-apa="Moran, P. A. P. (1950). Notes on continuous stochastic phenomena. Biometrika, 37(1–2), 17–23." data-busca="moran, p. a. p. (1950). notes on continuous stochastic phenomena. biometrika, 37(1–2), 17–23. incorporación nueva. el índice de autocorrelación espacial con el que se contrasta si los residuos del corte transversal territorial están agrupados geográficamente. moran">
+      <button class="copiar" title="Copiar esta referencia">copiar</button>
+      <div class="entry-meta"><span class="tag">Moran</span><span class="tag tag-nueva">2026-II</span></div>
+      <p class="apa">Moran, P. A. P. (1950). Notes on continuous stochastic phenomena. <em>Biometrika</em>, <em>37</em>(1–2), 17–23.</p>
+      <p class="note"><strong>Incorporación nueva.</strong> El índice de autocorrelación espacial con el que se contrasta si los residuos del corte transversal territorial están agrupados geográficamente.</p>
+    </article>
+  </div>
+  <div class="group">
+    <div class="group-title">Aprendizaje automático con fines causales</div>
+    <article class="entry" data-esen="1" data-nueva="1" data-apa="Chernozhukov, V., Chetverikov, D., Demirer, M., Duflo, E., Hansen, C., Newey, W., y Robins, J. (2018). Double/debiased machine learning for treatment and structural parameters. The Econometrics Journal, 21(1), C1–C68." data-busca="chernozhukov, v., chetverikov, d., demirer, m., duflo, e., hansen, c., newey, w., y robins, j. (2018). double/debiased machine learning for treatment and structural parameters. the econometrics journal, 21(1), c1–c68. incorporación nueva. el aprendizaje automático doble. resuelve una tensión real de la rúbrica: los diseños causales no se validan con validación cruzada, pero el ajuste por pliegues cruzados de este método son literalmente k pliegues, de modo que el requisito se cumple sin forzar nada. chernozhukov et al.">
+      <button class="copiar" title="Copiar esta referencia">copiar</button>
+      <div class="entry-meta"><span class="tag">Chernozhukov et al.</span><span class="tag tag-esen">Esencial</span><span class="tag tag-nueva">2026-II</span></div>
+      <p class="apa">Chernozhukov, V., Chetverikov, D., Demirer, M., Duflo, E., Hansen, C., Newey, W., y Robins, J. (2018). Double/debiased machine learning for treatment and structural parameters. <em>The Econometrics Journal</em>, <em>21</em>(1), C1–C68.</p>
+      <p class="note"><strong>Incorporación nueva.</strong> El aprendizaje automático doble. Resuelve una tensión real de la rúbrica: los diseños causales no se validan con validación cruzada, pero el ajuste por pliegues cruzados de este método son literalmente k pliegues, de modo que el requisito se cumple sin forzar nada.</p>
+    </article>
+    <article class="entry" data-esen="1" data-nueva="1" data-apa="Wager, S., y Athey, S. (2018). Estimation and inference of heterogeneous treatment effects using random forests. Journal of the American Statistical Association, 113(523), 1228–1242." data-busca="wager, s., y athey, s. (2018). estimation and inference of heterogeneous treatment effects using random forests. journal of the american statistical association, 113(523), 1228–1242. incorporación nueva. el bosque causal: la misma maquinaria del bosque aleatorio, otra cantidad estimada. entrega el efecto por territorio, que es justo lo que la entrega de regresiones solo pudo hacer por hecho victimizante. wager y athey">
+      <button class="copiar" title="Copiar esta referencia">copiar</button>
+      <div class="entry-meta"><span class="tag">Wager y Athey</span><span class="tag tag-esen">Esencial</span><span class="tag tag-nueva">2026-II</span></div>
+      <p class="apa">Wager, S., y Athey, S. (2018). Estimation and inference of heterogeneous treatment effects using random forests. <em>Journal of the American Statistical Association</em>, <em>113</em>(523), 1228–1242.</p>
+      <p class="note"><strong>Incorporación nueva.</strong> El bosque causal: la misma maquinaria del bosque aleatorio, otra cantidad estimada. Entrega el efecto por territorio, que es justo lo que la entrega de Regresiones solo pudo hacer por hecho victimizante.</p>
+    </article>
+    <article class="entry" data-esen="0" data-nueva="1" data-apa="Athey, S., Tibshirani, J., y Wager, S. (2019). Generalized random forests. The Annals of Statistics, 47(2), 1148–1178." data-busca="athey, s., tibshirani, j., y wager, s. (2019). generalized random forests. the annals of statistics, 47(2), 1148–1178. incorporación nueva. generalización del bosque causal a otros parámetros locales. referencia de implementación para la estimación del efecto heterogéneo. athey et al.">
+      <button class="copiar" title="Copiar esta referencia">copiar</button>
+      <div class="entry-meta"><span class="tag">Athey et al.</span><span class="tag tag-nueva">2026-II</span></div>
+      <p class="apa">Athey, S., Tibshirani, J., y Wager, S. (2019). Generalized random forests. <em>The Annals of Statistics</em>, <em>47</em>(2), 1148–1178.</p>
+      <p class="note"><strong>Incorporación nueva.</strong> Generalización del bosque causal a otros parámetros locales. Referencia de implementación para la estimación del efecto heterogéneo.</p>
+    </article>
+  </div>
+  </div>
+</section>
+<section class="section" id="sec-herramientas">
+  <button class="section-header" aria-expanded="true"><span class="flecha">&#9660;</span><span>VIII. Herramientas de cómputo y reproducibilidad</span><span class="n">15 referencias</span></button>
+  <div class="section-sub">Python y su ecosistema · Jupyter · LaTeX · Power BI — incorporación de 2026-II · El bloque en R documenta la fase descriptiva</div>
+  <div class="cuerpo">
+  <div class="group">
+    <div class="group-title">Ecosistema Python de la fase actual</div>
+    <article class="entry" data-esen="1" data-nueva="1" data-apa="Van Rossum, G., y Drake, F. L. (2009). Python 3 reference manual. CreateSpace." data-busca="van rossum, g., y drake, f. l. (2009). python 3 reference manual. createspace. incorporación nueva. cita del lenguaje en que están escritos los tres cuadernos. la fase descriptiva se hizo en r; la fase actual migró a python, y ambas citas deben convivir en el documento. python">
+      <button class="copiar" title="Copiar esta referencia">copiar</button>
+      <div class="entry-meta"><span class="tag">Python</span><span class="tag tag-esen">Esencial</span><span class="tag tag-nueva">2026-II</span></div>
+      <p class="apa">Van Rossum, G., y Drake, F. L. (2009). <em>Python 3 reference manual</em>. CreateSpace.</p>
+      <p class="note"><strong>Incorporación nueva.</strong> Cita del lenguaje en que están escritos los tres cuadernos. La fase descriptiva se hizo en R; la fase actual migró a Python, y ambas citas deben convivir en el documento.</p>
+    </article>
+    <article class="entry" data-esen="1" data-nueva="1" data-apa="Harris, C. R., Millman, K. J., van der Walt, S. J., Gommers, R., Virtanen, P., Cournapeau, D., Wieser, E., Taylor, J., Berg, S., Smith, N. J., Kern, R., Picus, M., Hoyer, S., van Kerkwijk, M. H., Brett, M., Haldane, A., del Río, J. F., Wiebe, M., Peterson, P., … Oliphant, T. E. (2020). Array programming with NumPy. Nature, 585, 357–362." data-busca="harris, c. r., millman, k. j., van der walt, s. j., gommers, r., virtanen, p., cournapeau, d., wieser, e., taylor, j., berg, s., smith, n. j., kern, r., picus, m., hoyer, s., van kerkwijk, m. h., brett, m., haldane, a., del río, j. f., wiebe, m., peterson, p., … oliphant, t. e. (2020). array programming with numpy. nature, 585, 357–362. incorporación nueva. cita oficial de numpy. numpy">
+      <button class="copiar" title="Copiar esta referencia">copiar</button>
+      <div class="entry-meta"><span class="tag">NumPy</span><span class="tag tag-esen">Esencial</span><span class="tag tag-nueva">2026-II</span></div>
+      <p class="apa">Harris, C. R., Millman, K. J., van der Walt, S. J., Gommers, R., Virtanen, P., Cournapeau, D., Wieser, E., Taylor, J., Berg, S., Smith, N. J., Kern, R., Picus, M., Hoyer, S., van Kerkwijk, M. H., Brett, M., Haldane, A., del Río, J. F., Wiebe, M., Peterson, P., … Oliphant, T. E. (2020). Array programming with NumPy. <em>Nature</em>, <em>585</em>, 357–362.</p>
+      <p class="note"><strong>Incorporación nueva.</strong> Cita oficial de NumPy.</p>
+    </article>
+    <article class="entry" data-esen="1" data-nueva="1" data-apa="McKinney, W. (2010). Data structures for statistical computing in Python. En Proceedings of the 9th Python in Science Conference (pp. 56–61)." data-busca="mckinney, w. (2010). data structures for statistical computing in python. en proceedings of the 9th python in science conference (pp. 56–61). incorporación nueva. cita oficial de pandas, con el que se leen los cortes del registro. recordatorio de lectura: index_col=false por la coma final de cada fila. pandas">
+      <button class="copiar" title="Copiar esta referencia">copiar</button>
+      <div class="entry-meta"><span class="tag">pandas</span><span class="tag tag-esen">Esencial</span><span class="tag tag-nueva">2026-II</span></div>
+      <p class="apa">McKinney, W. (2010). Data structures for statistical computing in Python. En <em>Proceedings of the 9th Python in Science Conference</em> (pp. 56–61).</p>
+      <p class="note"><strong>Incorporación nueva.</strong> Cita oficial de pandas, con el que se leen los cortes del registro. Recordatorio de lectura: <code>index_col=False</code> por la coma final de cada fila.</p>
+    </article>
+    <article class="entry" data-esen="1" data-nueva="1" data-apa="Seabold, S., y Perktold, J. (2010). Statsmodels: Econometric and statistical modeling with Python. En Proceedings of the 9th Python in Science Conference (pp. 92–96)." data-busca="seabold, s., y perktold, j. (2010). statsmodels: econometric and statistical modeling with python. en proceedings of the 9th python in science conference (pp. 92–96). incorporación nueva. biblioteca con la que se estiman la serie interrumpida, los modelos de conteo, los modelos mixtos y las pruebas de estacionariedad. statsmodels">
+      <button class="copiar" title="Copiar esta referencia">copiar</button>
+      <div class="entry-meta"><span class="tag">statsmodels</span><span class="tag tag-esen">Esencial</span><span class="tag tag-nueva">2026-II</span></div>
+      <p class="apa">Seabold, S., y Perktold, J. (2010). Statsmodels: Econometric and statistical modeling with Python. En <em>Proceedings of the 9th Python in Science Conference</em> (pp. 92–96).</p>
+      <p class="note"><strong>Incorporación nueva.</strong> Biblioteca con la que se estiman la serie interrumpida, los modelos de conteo, los modelos mixtos y las pruebas de estacionariedad.</p>
+    </article>
+    <article class="entry" data-esen="1" data-nueva="1" data-apa="Pedregosa, F., Varoquaux, G., Gramfort, A., Michel, V., Thirion, B., Grisel, O., Blondel, M., Prettenhofer, P., Weiss, R., Dubourg, V., Vanderplas, J., Passos, A., Cournapeau, D., Brucher, M., Perrot, M., y Duchesnay, É. (2011). Scikit-learn: Machine learning in Python. Journal of Machine Learning Research, 12, 2825–2830." data-busca="pedregosa, f., varoquaux, g., gramfort, a., michel, v., thirion, b., grisel, o., blondel, m., prettenhofer, p., weiss, r., dubourg, v., vanderplas, j., passos, a., cournapeau, d., brucher, m., perrot, m., y duchesnay, é. (2011). scikit-learn: machine learning in python. journal of machine learning research, 12, 2825–2830. incorporación nueva. bosques, validación por pliegues agrupados, métricas y detección de anomalías. scikit-learn">
+      <button class="copiar" title="Copiar esta referencia">copiar</button>
+      <div class="entry-meta"><span class="tag">scikit-learn</span><span class="tag tag-esen">Esencial</span><span class="tag tag-nueva">2026-II</span></div>
+      <p class="apa">Pedregosa, F., Varoquaux, G., Gramfort, A., Michel, V., Thirion, B., Grisel, O., Blondel, M., Prettenhofer, P., Weiss, R., Dubourg, V., Vanderplas, J., Passos, A., Cournapeau, D., Brucher, M., Perrot, M., y Duchesnay, É. (2011). Scikit-learn: Machine learning in Python. <em>Journal of Machine Learning Research</em>, <em>12</em>, 2825–2830.</p>
+      <p class="note"><strong>Incorporación nueva.</strong> Bosques, validación por pliegues agrupados, métricas y detección de anomalías.</p>
+    </article>
+    <article class="entry" data-esen="0" data-nueva="1" data-apa="Virtanen, P., Gommers, R., Oliphant, T. E., Haberland, M., Reddy, T., Cournapeau, D., Burovski, E., Peterson, P., Weckesser, W., Bright, J., van der Walt, S. J., Brett, M., Wilson, J., Millman, K. J., Mayorov, N., Nelson, A. R. J., Jones, E., Kern, R., Larson, E., … Vázquez-Baeza, Y. (2020). SciPy 1.0: Fundamental algorithms for scientific computing in Python. Nature Methods, 17, 261–272." data-busca="virtanen, p., gommers, r., oliphant, t. e., haberland, m., reddy, t., cournapeau, d., burovski, e., peterson, p., weckesser, w., bright, j., van der walt, s. j., brett, m., wilson, j., millman, k. j., mayorov, n., nelson, a. r. j., jones, e., kern, r., larson, e., … vázquez-baeza, y. (2020). scipy 1.0: fundamental algorithms for scientific computing in python. nature methods, 17, 261–272. incorporación nueva. pruebas estadísticas y optimización. scipy">
+      <button class="copiar" title="Copiar esta referencia">copiar</button>
+      <div class="entry-meta"><span class="tag">SciPy</span><span class="tag tag-nueva">2026-II</span></div>
+      <p class="apa">Virtanen, P., Gommers, R., Oliphant, T. E., Haberland, M., Reddy, T., Cournapeau, D., Burovski, E., Peterson, P., Weckesser, W., Bright, J., van der Walt, S. J., Brett, M., Wilson, J., Millman, K. J., Mayorov, N., Nelson, A. R. J., Jones, E., Kern, R., Larson, E., … Vázquez-Baeza, Y. (2020). SciPy 1.0: Fundamental algorithms for scientific computing in Python. <em>Nature Methods</em>, <em>17</em>, 261–272.</p>
+      <p class="note"><strong>Incorporación nueva.</strong> Pruebas estadísticas y optimización.</p>
+    </article>
+    <article class="entry" data-esen="0" data-nueva="1" data-apa="Hunter, J. D. (2007). Matplotlib: A 2D graphics environment. Computing in Science &amp; Engineering, 9(3), 90–95." data-busca="hunter, j. d. (2007). matplotlib: a 2d graphics environment. computing in science &amp; engineering, 9(3), 90–95. incorporación nueva. todas las figuras de los tres cuadernos se generan con matplotlib y se exportan en png y pdf. matplotlib">
+      <button class="copiar" title="Copiar esta referencia">copiar</button>
+      <div class="entry-meta"><span class="tag">Matplotlib</span><span class="tag tag-nueva">2026-II</span></div>
+      <p class="apa">Hunter, J. D. (2007). Matplotlib: A 2D graphics environment. <em>Computing in Science &amp; Engineering</em>, <em>9</em>(3), 90–95.</p>
+      <p class="note"><strong>Incorporación nueva.</strong> Todas las figuras de los tres cuadernos se generan con Matplotlib y se exportan en PNG y PDF.</p>
+    </article>
+    <article class="entry" data-esen="0" data-nueva="1" data-apa="Kluyver, T., Ragan-Kelley, B., Pérez, F., Granger, B., Bussonnier, M., Frederic, J., Kelley, K., Hamrick, J., Grout, J., Corlay, S., Ivanov, P., Avila, D., Abdalla, S., y Willing, C. (2016). Jupyter Notebooks: A publishing format for reproducible computational workflows. En F. Loizides y B. Schmidt (Eds.), Positioning and power in academic publishing (pp. 87–90). IOS Press." data-busca="kluyver, t., ragan-kelley, b., pérez, f., granger, b., bussonnier, m., frederic, j., kelley, k., hamrick, j., grout, j., corlay, s., ivanov, p., avila, d., abdalla, s., y willing, c. (2016). jupyter notebooks: a publishing format for reproducible computational workflows. en f. loizides y b. schmidt (eds.), positioning and power in academic publishing (pp. 87–90). ios press. incorporación nueva. el cuaderno es el prototipo del proyecto y debe dar cuenta de sí mismo: cada bloque declara su objetivo y es ejecutable de forma independiente. jupyter">
+      <button class="copiar" title="Copiar esta referencia">copiar</button>
+      <div class="entry-meta"><span class="tag">Jupyter</span><span class="tag tag-nueva">2026-II</span></div>
+      <p class="apa">Kluyver, T., Ragan-Kelley, B., Pérez, F., Granger, B., Bussonnier, M., Frederic, J., Kelley, K., Hamrick, J., Grout, J., Corlay, S., Ivanov, P., Avila, D., Abdalla, S., y Willing, C. (2016). Jupyter Notebooks: A publishing format for reproducible computational workflows. En F. Loizides y B. Schmidt (Eds.), <em>Positioning and power in academic publishing</em> (pp. 87–90). IOS Press.</p>
+      <p class="note"><strong>Incorporación nueva.</strong> El cuaderno es el prototipo del proyecto y debe dar cuenta de sí mismo: cada bloque declara su objetivo y es ejecutable de forma independiente.</p>
+    </article>
+    <article class="entry" data-esen="0" data-nueva="1" data-apa="Microsoft Corporation. (2026). Power BI Desktop [Software]. Microsoft. https://powerbi.microsoft.com/" data-busca="microsoft corporation. (2026). power bi desktop [software]. microsoft. https://powerbi.microsoft.com/ incorporación nueva. tablero exigido por la guía de analítica predictiva y construido también para machine learning sobre un modelo en estrella con tres dimensiones y cuatro tablas de hechos. power bi">
+      <button class="copiar" title="Copiar esta referencia">copiar</button>
+      <div class="entry-meta"><span class="tag">Power BI</span><span class="tag tag-nueva">2026-II</span></div>
+      <p class="apa">Microsoft Corporation. (2026). <em>Power BI Desktop</em> [Software]. Microsoft. https://powerbi.microsoft.com/</p>
+      <p class="note"><strong>Incorporación nueva.</strong> Tablero exigido por la guía de Analítica Predictiva y construido también para Machine Learning sobre un modelo en estrella con tres dimensiones y cuatro tablas de hechos.</p>
+    </article>
+    <article class="entry" data-esen="0" data-nueva="1" data-apa="Mittelbach, F., y Goossens, M. (2004). The LaTeX companion (2.ª ed.). Addison-Wesley." data-busca="mittelbach, f., y goossens, m. (2004). the latex companion (2.ª ed.). addison-wesley. incorporación nueva. los tres informes se componen en latex con la plantilla institucional: carta, márgenes de 2 cm, times 12 pt, interlineado 1,5. latex">
+      <button class="copiar" title="Copiar esta referencia">copiar</button>
+      <div class="entry-meta"><span class="tag">LaTeX</span><span class="tag tag-nueva">2026-II</span></div>
+      <p class="apa">Mittelbach, F., y Goossens, M. (2004). <em>The LaTeX companion</em> (2.ª ed.). Addison-Wesley.</p>
+      <p class="note"><strong>Incorporación nueva.</strong> Los tres informes se componen en LaTeX con la plantilla institucional: carta, márgenes de 2 cm, Times 12 pt, interlineado 1,5.</p>
+    </article>
+  </div>
+  <div class="group">
+    <div class="group-title">Entorno R — fase descriptiva, 2026-I</div>
+    <article class="entry" data-esen="0" data-nueva="0" data-apa="R Core Team. (2024). R: A language and environment for statistical computing (v. 4.4.1) [Software]. R Foundation for Statistical Computing. https://www.R-project.org/" data-busca="r core team. (2024). r: a language and environment for statistical computing (v. 4.4.1) [software]. r foundation for statistical computing. https://www.r-project.org/ cita del entorno con que se hizo la fase descriptiva. se conserva porque los resultados de esa fase siguen citándose en el proyecto paraguas. r core team">
+      <button class="copiar" title="Copiar esta referencia">copiar</button>
+      <div class="entry-meta"><span class="tag">R Core Team</span></div>
+      <p class="apa">R Core Team. (2024). <em>R: A language and environment for statistical computing</em> (v. 4.4.1) [Software]. R Foundation for Statistical Computing. https://www.R-project.org/</p>
+      <p class="note">Cita del entorno con que se hizo la fase descriptiva. Se conserva porque los resultados de esa fase siguen citándose en el proyecto paraguas.</p>
+    </article>
+    <article class="entry" data-esen="0" data-nueva="0" data-apa="Wickham, H., Averick, M., Bryan, J., Chang, W., D&#x27;Agostino McGowan, L., François, R., Grolemund, G., Hayes, A., Henry, L., Hester, J., Kuhn, M., Pedersen, T. L., Miller, E., Bache, S. M., Müller, K., Ooms, J., Robinson, D., Seidel, D. P., Spinu, V., … Yutani, H. (2019). Welcome to the tidyverse. Journal of Open Source Software, 4(43), 1686." data-busca="wickham, h., averick, m., bryan, j., chang, w., d&#x27;agostino mcgowan, l., françois, r., grolemund, g., hayes, a., henry, l., hester, j., kuhn, m., pedersen, t. l., miller, e., bache, s. m., müller, k., ooms, j., robinson, d., seidel, d. p., spinu, v., … yutani, h. (2019). welcome to the tidyverse. journal of open source software, 4(43), 1686. cita oficial del metapaquete tidyverse, núcleo del procesamiento de la fase descriptiva. tidyverse">
+      <button class="copiar" title="Copiar esta referencia">copiar</button>
+      <div class="entry-meta"><span class="tag">tidyverse</span></div>
+      <p class="apa">Wickham, H., Averick, M., Bryan, J., Chang, W., D'Agostino McGowan, L., François, R., Grolemund, G., Hayes, A., Henry, L., Hester, J., Kuhn, M., Pedersen, T. L., Miller, E., Bache, S. M., Müller, K., Ooms, J., Robinson, D., Seidel, D. P., Spinu, V., … Yutani, H. (2019). Welcome to the tidyverse. <em>Journal of Open Source Software</em>, <em>4</em>(43), 1686.</p>
+      <p class="note">Cita oficial del metapaquete tidyverse, núcleo del procesamiento de la fase descriptiva.</p>
+    </article>
+    <article class="entry" data-esen="0" data-nueva="0" data-apa="Wickham, H. (2016). ggplot2: Elegant graphics for data analysis (2.ª ed.). Springer." data-busca="wickham, h. (2016). ggplot2: elegant graphics for data analysis (2.ª ed.). springer. las doce figuras de la fase descriptiva se generaron con ggplot2. ggplot2">
+      <button class="copiar" title="Copiar esta referencia">copiar</button>
+      <div class="entry-meta"><span class="tag">ggplot2</span></div>
+      <p class="apa">Wickham, H. (2016). <em>ggplot2: Elegant graphics for data analysis</em> (2.ª ed.). Springer.</p>
+      <p class="note">Las doce figuras de la fase descriptiva se generaron con ggplot2.</p>
+    </article>
+    <article class="entry" data-esen="0" data-nueva="0" data-apa="Wickham, H., Çetinkaya-Rundel, M., y Grolemund, G. (2023). R for data science: Import, tidy, transform, visualize, and model data (2.ª ed.). O&#x27;Reilly Media. https://r4ds.hadley.nz/" data-busca="wickham, h., çetinkaya-rundel, m., y grolemund, g. (2023). r for data science: import, tidy, transform, visualize, and model data (2.ª ed.). o&#x27;reilly media. https://r4ds.hadley.nz/ referencia metodológica del pipeline de análisis en r de la fase descriptiva. r for data science">
+      <button class="copiar" title="Copiar esta referencia">copiar</button>
+      <div class="entry-meta"><span class="tag">R for Data Science</span></div>
+      <p class="apa">Wickham, H., Çetinkaya-Rundel, M., y Grolemund, G. (2023). <em>R for data science: Import, tidy, transform, visualize, and model data</em> (2.ª ed.). O'Reilly Media. https://r4ds.hadley.nz/</p>
+      <p class="note">Referencia metodológica del pipeline de análisis en R de la fase descriptiva.</p>
+    </article>
+    <article class="entry" data-esen="0" data-nueva="0" data-apa="Fox, J., y Weisberg, S. (2019). An R companion to applied regression (3.ª ed.). Sage." data-busca="fox, j., y weisberg, s. (2019). an r companion to applied regression (3.ª ed.). sage. referencia del paquete car: prueba de levene, test de durbin-watson, vif y test de breusch-pagan en el diagnóstico de regresión de la fase descriptiva. fox · car">
+      <button class="copiar" title="Copiar esta referencia">copiar</button>
+      <div class="entry-meta"><span class="tag">Fox · car</span></div>
+      <p class="apa">Fox, J., y Weisberg, S. (2019). <em>An R companion to applied regression</em> (3.ª ed.). Sage.</p>
+      <p class="note">Referencia del paquete <code>car</code>: prueba de Levene, test de Durbin-Watson, VIF y test de Breusch-Pagan en el diagnóstico de regresión de la fase descriptiva.</p>
+    </article>
+  </div>
+  </div>
+</section>
+<section class="section" id="sec-estadistica">
+  <button class="section-header" aria-expanded="true"><span class="flecha">&#9660;</span><span>IX. Estadística aplicada y pruebas clásicas</span><span class="n">9 referencias</span></button>
+  <div class="section-sub">Montgomery · Devore · ISLR · Casella y Berger · artículos originales de las pruebas</div>
+  <div class="cuerpo">
+  <div class="group">
+    <div class="group-title">Manuales</div>
+    <article class="entry" data-esen="1" data-nueva="0" data-apa="Montgomery, D. C., y Runger, G. C. (2018). Applied statistics and probability for engineers (7.ª ed.). Wiley." data-busca="montgomery, d. c., y runger, g. c. (2018). applied statistics and probability for engineers (7.ª ed.). wiley. texto de referencia estándar para estadística aplicada: distribuciones, intervalos de confianza, pruebas de hipótesis y regresión lineal. montgomery y runger">
+      <button class="copiar" title="Copiar esta referencia">copiar</button>
+      <div class="entry-meta"><span class="tag">Montgomery y Runger</span><span class="tag tag-esen">Esencial</span></div>
+      <p class="apa">Montgomery, D. C., y Runger, G. C. (2018). <em>Applied statistics and probability for engineers</em> (7.ª ed.). Wiley.</p>
+      <p class="note">Texto de referencia estándar para estadística aplicada: distribuciones, intervalos de confianza, pruebas de hipótesis y regresión lineal.</p>
+    </article>
+    <article class="entry" data-esen="0" data-nueva="0" data-apa="Devore, J. L. (2016). Probabilidad y estadística para ingeniería y ciencias (9.ª ed.; J. García Bernal, Trad.). Cengage Learning." data-busca="devore, j. l. (2016). probabilidad y estadística para ingeniería y ciencias (9.ª ed.; j. garcía bernal, trad.). cengage learning. texto en español, útil para las distribuciones t, f y chi-cuadrado que sostienen las pruebas inferenciales del proyecto. devore">
+      <button class="copiar" title="Copiar esta referencia">copiar</button>
+      <div class="entry-meta"><span class="tag">Devore</span></div>
+      <p class="apa">Devore, J. L. (2016). <em>Probabilidad y estadística para ingeniería y ciencias</em> (9.ª ed.; J. García Bernal, Trad.). Cengage Learning.</p>
+      <p class="note">Texto en español, útil para las distribuciones t, F y chi-cuadrado que sostienen las pruebas inferenciales del proyecto.</p>
+    </article>
+    <article class="entry" data-esen="0" data-nueva="0" data-apa="James, G., Witten, D., Hastie, T., Tibshirani, R., y Taylor, J. (2023). An introduction to statistical learning with applications in R (2.ª ed. rev.). Springer. https://www.statlearning.com/" data-busca="james, g., witten, d., hastie, t., tibshirani, r., y taylor, j. (2023). an introduction to statistical learning with applications in r (2.ª ed. rev.). springer. https://www.statlearning.com/ texto canónico para aprendizaje estadístico aplicado. relevante para el diagnóstico de regresión: vif, distancia de cook, validación cruzada. islr">
+      <button class="copiar" title="Copiar esta referencia">copiar</button>
+      <div class="entry-meta"><span class="tag">ISLR</span></div>
+      <p class="apa">James, G., Witten, D., Hastie, T., Tibshirani, R., y Taylor, J. (2023). <em>An introduction to statistical learning with applications in R</em> (2.ª ed. rev.). Springer. https://www.statlearning.com/</p>
+      <p class="note">Texto canónico para aprendizaje estadístico aplicado. Relevante para el diagnóstico de regresión: VIF, distancia de Cook, validación cruzada.</p>
+    </article>
+    <article class="entry" data-esen="0" data-nueva="0" data-apa="Casella, G., y Berger, R. L. (2002). Statistical inference (2.ª ed.). Duxbury / Thomson Learning." data-busca="casella, g., y berger, r. l. (2002). statistical inference (2.ª ed.). duxbury / thomson learning. referencia de inferencia estadística matemáticamente rigurosa. fundamenta las bases teóricas de las pruebas de hipótesis del proyecto. casella y berger">
+      <button class="copiar" title="Copiar esta referencia">copiar</button>
+      <div class="entry-meta"><span class="tag">Casella y Berger</span></div>
+      <p class="apa">Casella, G., y Berger, R. L. (2002). <em>Statistical inference</em> (2.ª ed.). Duxbury / Thomson Learning.</p>
+      <p class="note">Referencia de inferencia estadística matemáticamente rigurosa. Fundamenta las bases teóricas de las pruebas de hipótesis del proyecto.</p>
+    </article>
+  </div>
+  <div class="group">
+    <div class="group-title">Artículos originales de las pruebas utilizadas</div>
+    <article class="entry" data-esen="0" data-nueva="0" data-apa="Shapiro, S. S., y Wilk, M. B. (1965). An analysis of variance test for normality (complete samples). Biometrika, 52(3–4), 591–611." data-busca="shapiro, s. s., y wilk, m. b. (1965). an analysis of variance test for normality (complete samples). biometrika, 52(3–4), 591–611. artículo original de la prueba de normalidad. shapiro y wilk">
+      <button class="copiar" title="Copiar esta referencia">copiar</button>
+      <div class="entry-meta"><span class="tag">Shapiro y Wilk</span></div>
+      <p class="apa">Shapiro, S. S., y Wilk, M. B. (1965). An analysis of variance test for normality (complete samples). <em>Biometrika</em>, <em>52</em>(3–4), 591–611.</p>
+      <p class="note">Artículo original de la prueba de normalidad.</p>
+    </article>
+    <article class="entry" data-esen="0" data-nueva="0" data-apa="Kruskal, W. H., y Wallis, W. A. (1952). Use of ranks in one-criterion variance analysis. Journal of the American Statistical Association, 47(260), 583–621." data-busca="kruskal, w. h., y wallis, w. a. (1952). use of ranks in one-criterion variance analysis. journal of the american statistical association, 47(260), 583–621. artículo original de la prueba no paramétrica de comparación de grupos. kruskal y wallis">
+      <button class="copiar" title="Copiar esta referencia">copiar</button>
+      <div class="entry-meta"><span class="tag">Kruskal y Wallis</span></div>
+      <p class="apa">Kruskal, W. H., y Wallis, W. A. (1952). Use of ranks in one-criterion variance analysis. <em>Journal of the American Statistical Association</em>, <em>47</em>(260), 583–621.</p>
+      <p class="note">Artículo original de la prueba no paramétrica de comparación de grupos.</p>
+    </article>
+    <article class="entry" data-esen="0" data-nueva="0" data-apa="Welch, B. L. (1947). The generalization of «Student&#x27;s» problem when several different population variances are involved. Biometrika, 34(1–2), 28–35." data-busca="welch, b. l. (1947). the generalization of «student&#x27;s» problem when several different population variances are involved. biometrika, 34(1–2), 28–35. artículo original de la prueba t sin supuesto de igualdad de varianzas. welch">
+      <button class="copiar" title="Copiar esta referencia">copiar</button>
+      <div class="entry-meta"><span class="tag">Welch</span></div>
+      <p class="apa">Welch, B. L. (1947). The generalization of «Student's» problem when several different population variances are involved. <em>Biometrika</em>, <em>34</em>(1–2), 28–35.</p>
+      <p class="note">Artículo original de la prueba t sin supuesto de igualdad de varianzas.</p>
+    </article>
+    <article class="entry" data-esen="0" data-nueva="0" data-apa="Tukey, J. W. (1949). Comparing individual means in the analysis of variance. Biometrics, 5(2), 99–114." data-busca="tukey, j. w. (1949). comparing individual means in the analysis of variance. biometrics, 5(2), 99–114. artículo original de la prueba hsd para comparaciones múltiples tras el análisis de varianza. tukey">
+      <button class="copiar" title="Copiar esta referencia">copiar</button>
+      <div class="entry-meta"><span class="tag">Tukey</span></div>
+      <p class="apa">Tukey, J. W. (1949). Comparing individual means in the analysis of variance. <em>Biometrics</em>, <em>5</em>(2), 99–114.</p>
+      <p class="note">Artículo original de la prueba HSD para comparaciones múltiples tras el análisis de varianza.</p>
+    </article>
+    <article class="entry" data-esen="0" data-nueva="1" data-apa="Mardia, K. V. (1970). Measures of multivariate skewness and kurtosis with applications. Biometrika, 57(3), 519–530." data-busca="mardia, k. v. (1970). measures of multivariate skewness and kurtosis with applications. biometrika, 57(3), 519–530. incorporación nueva. prueba de normalidad multivariante aplicada a las innovaciones de cuatro hechos victimizantes, que no se rechaza. mardia">
+      <button class="copiar" title="Copiar esta referencia">copiar</button>
+      <div class="entry-meta"><span class="tag">Mardia</span><span class="tag tag-nueva">2026-II</span></div>
+      <p class="apa">Mardia, K. V. (1970). Measures of multivariate skewness and kurtosis with applications. <em>Biometrika</em>, <em>57</em>(3), 519–530.</p>
+      <p class="note"><strong>Incorporación nueva.</strong> Prueba de normalidad multivariante aplicada a las innovaciones de cuatro hechos victimizantes, que no se rechaza.</p>
+    </article>
+  </div>
+  </div>
+</section>
+<section class="section" id="sec-inter">
+  <button class="section-header" aria-expanded="true"><span class="flecha">&#9660;</span><span>X. Organismos internacionales y contexto comparado</span><span class="n">6 referencias</span></button>
+  <div class="section-sub">ACNUR · IDMC · CICR · ONU-DH · PNUD</div>
+  <div class="cuerpo">
+  <div class="group">
+    <div class="group-title">Desplazamiento forzado y situación humanitaria</div>
+    <article class="entry" data-esen="1" data-nueva="0" data-apa="Alto Comisionado de las Naciones Unidas para los Refugiados. (2024). Tendencias globales: Desplazamiento forzado en 2023. ACNUR. https://www.acnur.org/" data-busca="alto comisionado de las naciones unidas para los refugiados. (2024). tendencias globales: desplazamiento forzado en 2023. acnur. https://www.acnur.org/ informe anual de acnur. colombia figura entre los países con mayor número de desplazados internos del mundo. proporciona el contexto internacional comparado de las cifras del ruv. acnur">
+      <button class="copiar" title="Copiar esta referencia">copiar</button>
+      <div class="entry-meta"><span class="tag">ACNUR</span><span class="tag tag-esen">Esencial</span></div>
+      <p class="apa">Alto Comisionado de las Naciones Unidas para los Refugiados. (2024). <em>Tendencias globales: Desplazamiento forzado en 2023</em>. ACNUR. https://www.acnur.org/</p>
+      <p class="note">Informe anual de ACNUR. Colombia figura entre los países con mayor número de desplazados internos del mundo. Proporciona el contexto internacional comparado de las cifras del RUV.</p>
+    </article>
+    <article class="entry" data-esen="0" data-nueva="0" data-apa="Alto Comisionado de las Naciones Unidas para los Refugiados. (2022). Colombia: Plan de respuesta para refugiados y migrantes 2022–2023. ACNUR. https://www.acnur.org/colombia.html" data-busca="alto comisionado de las naciones unidas para los refugiados. (2022). colombia: plan de respuesta para refugiados y migrantes 2022–2023. acnur. https://www.acnur.org/colombia.html datos específicos sobre población desplazada interna, refugiados en países vecinos y necesidades humanitarias. acnur · colombia">
+      <button class="copiar" title="Copiar esta referencia">copiar</button>
+      <div class="entry-meta"><span class="tag">ACNUR · Colombia</span></div>
+      <p class="apa">Alto Comisionado de las Naciones Unidas para los Refugiados. (2022). <em>Colombia: Plan de respuesta para refugiados y migrantes 2022–2023</em>. ACNUR. https://www.acnur.org/colombia.html</p>
+      <p class="note">Datos específicos sobre población desplazada interna, refugiados en países vecinos y necesidades humanitarias.</p>
+    </article>
+    <article class="entry" data-esen="0" data-nueva="0" data-apa="Internal Displacement Monitoring Centre. (2024). Global report on internal displacement 2024. IDMC. https://www.internal-displacement.org/global-report/grid2024/" data-busca="internal displacement monitoring centre. (2024). global report on internal displacement 2024. idmc. https://www.internal-displacement.org/global-report/grid2024/ referencia internacional sobre desplazamiento interno, con estadísticas comparables entre países. permite contrastar la magnitud colombiana con estándares internacionales. idmc">
+      <button class="copiar" title="Copiar esta referencia">copiar</button>
+      <div class="entry-meta"><span class="tag">IDMC</span></div>
+      <p class="apa">Internal Displacement Monitoring Centre. (2024). <em>Global report on internal displacement 2024</em>. IDMC. https://www.internal-displacement.org/global-report/grid2024/</p>
+      <p class="note">Referencia internacional sobre desplazamiento interno, con estadísticas comparables entre países. Permite contrastar la magnitud colombiana con estándares internacionales.</p>
+    </article>
+    <article class="entry" data-esen="0" data-nueva="0" data-apa="Comité Internacional de la Cruz Roja. (2023). Colombia: Informe de situación humanitaria 2022. CICR. https://www.icrc.org/es/" data-busca="comité internacional de la cruz roja. (2023). colombia: informe de situación humanitaria 2022. cicr. https://www.icrc.org/es/ documenta el conflicto armado activo posterior al acuerdo: minas, confinamiento y reclutamiento. complementa al ruv en las categorías que persisten después de 2016. cicr">
+      <button class="copiar" title="Copiar esta referencia">copiar</button>
+      <div class="entry-meta"><span class="tag">CICR</span></div>
+      <p class="apa">Comité Internacional de la Cruz Roja. (2023). <em>Colombia: Informe de situación humanitaria 2022</em>. CICR. https://www.icrc.org/es/</p>
+      <p class="note">Documenta el conflicto armado activo posterior al Acuerdo: minas, confinamiento y reclutamiento. Complementa al RUV en las categorías que persisten después de 2016.</p>
+    </article>
+    <article class="entry" data-esen="0" data-nueva="0" data-apa="Oficina de la Alta Comisionada de las Naciones Unidas para los Derechos Humanos. (2024). Informe sobre la situación de los derechos humanos en Colombia: Período enero–diciembre 2023. ONU-DH. https://www.ohchr.org/es/countries/colombia" data-busca="oficina de la alta comisionada de las naciones unidas para los derechos humanos. (2024). informe sobre la situación de los derechos humanos en colombia: período enero–diciembre 2023. onu-dh. https://www.ohchr.org/es/countries/colombia monitorea la implementación del acuerdo y documenta patrones persistentes de violencia. fuente para la línea de trabajo sobre revictimización por estructuras armadas sucesoras. onu-dh">
+      <button class="copiar" title="Copiar esta referencia">copiar</button>
+      <div class="entry-meta"><span class="tag">ONU-DH</span></div>
+      <p class="apa">Oficina de la Alta Comisionada de las Naciones Unidas para los Derechos Humanos. (2024). <em>Informe sobre la situación de los derechos humanos en Colombia: Período enero–diciembre 2023</em>. ONU-DH. https://www.ohchr.org/es/countries/colombia</p>
+      <p class="note">Monitorea la implementación del Acuerdo y documenta patrones persistentes de violencia. Fuente para la línea de trabajo sobre revictimización por estructuras armadas sucesoras.</p>
+    </article>
+    <article class="entry" data-esen="0" data-nueva="0" data-apa="Programa de las Naciones Unidas para el Desarrollo. (2022). Informe de desarrollo humano 2022: Tiempos inciertos, vidas inestables. PNUD. https://hdr.undp.org/content/human-development-report-2022" data-busca="programa de las naciones unidas para el desarrollo. (2022). informe de desarrollo humano 2022: tiempos inciertos, vidas inestables. pnud. https://hdr.undp.org/content/human-development-report-2022 contextualiza los datos del conflicto en el marco global del desarrollo humano y aporta el vínculo entre victimización y privación que la línea sobre silencio institucional debe medir. pnud">
+      <button class="copiar" title="Copiar esta referencia">copiar</button>
+      <div class="entry-meta"><span class="tag">PNUD</span></div>
+      <p class="apa">Programa de las Naciones Unidas para el Desarrollo. (2022). <em>Informe de desarrollo humano 2022: Tiempos inciertos, vidas inestables</em>. PNUD. https://hdr.undp.org/content/human-development-report-2022</p>
+      <p class="note">Contextualiza los datos del conflicto en el marco global del desarrollo humano y aporta el vínculo entre victimización y privación que la línea sobre silencio institucional debe medir.</p>
+    </article>
+  </div>
+  </div>
+</section>
+<section class="section" id="sec-esencial">
+  <button class="section-header" aria-expanded="true"><span class="flecha">&#9660;</span><span>XI. Metodología de la investigación y filosofía de la ciencia</span><span class="n">7 referencias</span></button>
+  <div class="section-sub">APA 7 · Fayyad et al. · Hernández Sampieri · Creswell · Bourdieu · Von Wright · Kuhn</div>
+  <div class="cuerpo">
+  <div class="group">
+    <div class="group-title">Normas y diseño de la investigación</div>
+    <article class="entry" data-esen="1" data-nueva="0" data-apa="American Psychological Association. (2020). Publication manual of the American Psychological Association (7.ª ed.). APA." data-busca="american psychological association. (2020). publication manual of the american psychological association (7.ª ed.). apa. la fuente normativa de todo el formato del proyecto. nota obligatoria en la lista de referencias: «las referencias siguen las normas de la american psychological association (7.ª ed., 2020)». apa">
+      <button class="copiar" title="Copiar esta referencia">copiar</button>
+      <div class="entry-meta"><span class="tag">APA</span><span class="tag tag-esen">Esencial</span></div>
+      <p class="apa">American Psychological Association. (2020). <em>Publication manual of the American Psychological Association</em> (7.ª ed.). APA.</p>
+      <p class="note">La fuente normativa de todo el formato del proyecto. Nota obligatoria en la lista de referencias: «Las referencias siguen las normas de la American Psychological Association (7.ª ed., 2020)».</p>
+    </article>
+    <article class="entry" data-esen="1" data-nueva="1" data-apa="Fayyad, U., Piatetsky-Shapiro, G., y Smyth, P. (1996). From data mining to knowledge discovery in databases. AI Magazine, 17(3), 37–54." data-busca="fayyad, u., piatetsky-shapiro, g., y smyth, p. (1996). from data mining to knowledge discovery in databases. ai magazine, 17(3), 37–54. incorporación nueva. las cinco fases del descubrimiento de conocimiento —selección, preprocesamiento, transformación, minería e interpretación— son el proceso metodológico declarado en la portada de los tres cuadernos y el diagrama de fases del póster. fayyad et al.">
+      <button class="copiar" title="Copiar esta referencia">copiar</button>
+      <div class="entry-meta"><span class="tag">Fayyad et al.</span><span class="tag tag-esen">Esencial</span><span class="tag tag-nueva">2026-II</span></div>
+      <p class="apa">Fayyad, U., Piatetsky-Shapiro, G., y Smyth, P. (1996). From data mining to knowledge discovery in databases. <em>AI Magazine</em>, <em>17</em>(3), 37–54.</p>
+      <p class="note"><strong>Incorporación nueva.</strong> Las cinco fases del descubrimiento de conocimiento —selección, preprocesamiento, transformación, minería e interpretación— son el proceso metodológico declarado en la portada de los tres cuadernos y el diagrama de fases del póster.</p>
+    </article>
+    <article class="entry" data-esen="0" data-nueva="0" data-apa="Hernández Sampieri, R., Fernández Collado, C., y Baptista Lucio, P. (2014). Metodología de la investigación (6.ª ed.). McGraw-Hill." data-busca="hernández sampieri, r., fernández collado, c., y baptista lucio, p. (2014). metodología de la investigación (6.ª ed.). mcgraw-hill. referencia metodológica estándar en ciencias sociales latinoamericanas. define el tipo descriptivo-correlacional con componente inferencial adoptado por la fase descriptiva. hernández sampieri">
+      <button class="copiar" title="Copiar esta referencia">copiar</button>
+      <div class="entry-meta"><span class="tag">Hernández Sampieri</span></div>
+      <p class="apa">Hernández Sampieri, R., Fernández Collado, C., y Baptista Lucio, P. (2014). <em>Metodología de la investigación</em> (6.ª ed.). McGraw-Hill.</p>
+      <p class="note">Referencia metodológica estándar en ciencias sociales latinoamericanas. Define el tipo descriptivo-correlacional con componente inferencial adoptado por la fase descriptiva.</p>
+    </article>
+    <article class="entry" data-esen="0" data-nueva="0" data-apa="Creswell, J. W., y Creswell, J. D. (2018). Research design: Qualitative, quantitative, and mixed methods approaches (5.ª ed.). Sage." data-busca="creswell, j. w., y creswell, j. d. (2018). research design: qualitative, quantitative, and mixed methods approaches (5.ª ed.). sage. texto de referencia para el diseño mixto. define los principios de triangulación que articulan estadística, filosofía y testimonio en el proyecto. creswell">
+      <button class="copiar" title="Copiar esta referencia">copiar</button>
+      <div class="entry-meta"><span class="tag">Creswell</span></div>
+      <p class="apa">Creswell, J. W., y Creswell, J. D. (2018). <em>Research design: Qualitative, quantitative, and mixed methods approaches</em> (5.ª ed.). Sage.</p>
+      <p class="note">Texto de referencia para el diseño mixto. Define los principios de triangulación que articulan estadística, filosofía y testimonio en el proyecto.</p>
+    </article>
+    <article class="entry" data-esen="0" data-nueva="0" data-apa="Bourdieu, P., Chamboredon, J.-C., y Passeron, J.-C. (2002). El oficio de sociólogo: Presupuestos epistemológicos (F. H. Azcurra y J. Sazbón, Trads.; 2.ª ed.). Siglo XXI. (Obra original publicada en 1973)" data-busca="bourdieu, p., chamboredon, j.-c., y passeron, j.-c. (2002). el oficio de sociólogo: presupuestos epistemológicos (f. h. azcurra y j. sazbón, trads.; 2.ª ed.). siglo xxi. (obra original publicada en 1973) la «vigilancia epistemológica» fundamenta la bitácora de decisiones metodológicas: cada compromiso inferencial queda escrito antes de ver el resultado. bourdieu et al.">
+      <button class="copiar" title="Copiar esta referencia">copiar</button>
+      <div class="entry-meta"><span class="tag">Bourdieu et al.</span></div>
+      <p class="apa">Bourdieu, P., Chamboredon, J.-C., y Passeron, J.-C. (2002). <em>El oficio de sociólogo: Presupuestos epistemológicos</em> (F. H. Azcurra y J. Sazbón, Trads.; 2.ª ed.). Siglo XXI. (Obra original publicada en 1973)</p>
+      <p class="note">La «vigilancia epistemológica» fundamenta la bitácora de decisiones metodológicas: cada compromiso inferencial queda escrito antes de ver el resultado.</p>
+    </article>
+    <article class="entry" data-esen="1" data-nueva="0" data-apa="Von Wright, G. H. (1979). Explicación y comprensión (L. Vega Reñón, Trad.). Alianza Editorial. (Obra original publicada en 1971)" data-busca="von wright, g. h. (1979). explicación y comprensión (l. vega reñón, trad.). alianza editorial. (obra original publicada en 1971) la distinción entre explicación causal y comprensión define el estatuto epistemológico del proyecto: el análisis estadístico opera en el primer modo; la comprensión del conflicto como fenómeno humano y político requiere también el segundo. von wright">
+      <button class="copiar" title="Copiar esta referencia">copiar</button>
+      <div class="entry-meta"><span class="tag">Von Wright</span><span class="tag tag-esen">Esencial</span></div>
+      <p class="apa">Von Wright, G. H. (1979). <em>Explicación y comprensión</em> (L. Vega Reñón, Trad.). Alianza Editorial. (Obra original publicada en 1971)</p>
+      <p class="note">La distinción entre explicación causal y comprensión define el estatuto epistemológico del proyecto: el análisis estadístico opera en el primer modo; la comprensión del conflicto como fenómeno humano y político requiere también el segundo.</p>
+    </article>
+    <article class="entry" data-esen="0" data-nueva="0" data-apa="Kuhn, T. S. (2004). La estructura de las revoluciones científicas (A. Contin, Trad.). Fondo de Cultura Económica. (Obra original publicada en 1962)" data-busca="kuhn, t. s. (2004). la estructura de las revoluciones científicas (a. contin, trad.). fondo de cultura económica. (obra original publicada en 1962) el concepto de paradigma permite entender por qué la categoría «víctima del conflicto armado» no es una descripción neutral. los cambios en las definiciones del ruv son cambios de paradigma con consecuencias sobre qué se puede ver y qué permanece invisible. kuhn">
+      <button class="copiar" title="Copiar esta referencia">copiar</button>
+      <div class="entry-meta"><span class="tag">Kuhn</span></div>
+      <p class="apa">Kuhn, T. S. (2004). <em>La estructura de las revoluciones científicas</em> (A. Contin, Trad.). Fondo de Cultura Económica. (Obra original publicada en 1962)</p>
+      <p class="note">El concepto de paradigma permite entender por qué la categoría «víctima del conflicto armado» no es una descripción neutral. Los cambios en las definiciones del RUV son cambios de paradigma con consecuencias sobre qué se puede ver y qué permanece invisible.</p>
+    </article>
+  </div>
+  </div>
+</section>
+</div>
+<footer class="footer">
+  <strong>131 referencias · 11 secciones · APA 7.ª edición</strong><br>
+  Proyecto «Huellas del conflicto» · UNICAFAM · corte del Registro al 30 de septiembre de 2026<br>
+  Fase descriptiva 2026-I: Kevin Alexander Pérez y Juan Pablo Aguirre Tíjaro · Fase 2026-II: Juan Pablo Aguirre Tíjaro, con Anderson Jawarlan Vargas Ruiz en Regresiones lineales<br><br>
+  Documento de trabajo. Las anotaciones de cada ficha no forman parte de la lista de referencias del informe.
+</footer>
+<script>
+const q = (s, r) => (r || document).querySelector(s);
+const qa = (s, r) => Array.from((r || document).querySelectorAll(s));
+
+const entradas = qa('.entry');
+const secciones = qa('.section');
+const campo = q('#buscar');
+const btnEsen = q('#f-esen');
+const btnNueva = q('#f-nueva');
+const cuenta = q('#cuenta');
+const sinResultados = q('#sin-resultados');
+
+function filtrar() {
+  const t = campo.value.trim().toLowerCase();
+  const soloEsen = btnEsen.classList.contains('on');
+  const soloNueva = btnNueva.classList.contains('on');
+  let visibles = 0;
+  entradas.forEach(e => {
+    let ok = true;
+    if (soloEsen && e.dataset.esen !== '1') ok = false;
+    if (ok && soloNueva && e.dataset.nueva !== '1') ok = false;
+    if (ok && t && !e.dataset.busca.includes(t)) ok = false;
+    e.classList.toggle('oculto', !ok);
+    if (ok) visibles++;
+  });
+  qa('.group').forEach(g => {
+    const hay = qa('.entry', g).some(e => !e.classList.contains('oculto'));
+    g.classList.toggle('oculto', !hay);
+  });
+  secciones.forEach(s => {
+    const n = qa('.entry', s).filter(e => !e.classList.contains('oculto')).length;
+    s.classList.toggle('oculto', n === 0);
+    q('.n', s).textContent = n + (n === 1 ? ' referencia' : ' referencias');
+    const tarjeta = q('.tarjeta[href="#' + s.id + '"]');
+    if (tarjeta) {
+      tarjeta.classList.toggle('oculto', n === 0);
+      q('.tarjeta-n', tarjeta).textContent = n + ' ref.';
+    }
+    const chip = q('.chip[data-ir="' + s.id + '"]');
+    if (chip) chip.classList.toggle('oculto', n === 0);
+  });
+  cuenta.textContent = visibles + ' de ' + entradas.length;
+  sinResultados.classList.toggle('oculto', visibles > 0);
+}
+
+campo.addEventListener('input', filtrar);
+[btnEsen, btnNueva].forEach(b => b.addEventListener('click', () => {
+  b.classList.toggle('on');
+  b.setAttribute('aria-pressed', b.classList.contains('on'));
+  filtrar();
+}));
+
+qa('.section-header').forEach(h => h.addEventListener('click', () => {
+  const s = h.closest('.section');
+  s.classList.toggle('plegada');
+  h.setAttribute('aria-expanded', !s.classList.contains('plegada'));
+}));
+
+q('#plegar').addEventListener('click', () => {
+  const alguna = secciones.some(s => !s.classList.contains('plegada'));
+  secciones.forEach(s => {
+    s.classList.toggle('plegada', alguna);
+    q('.section-header', s).setAttribute('aria-expanded', !alguna);
+  });
+  q('#plegar').textContent = alguna ? 'Desplegar todo' : 'Plegar todo';
+});
+
+function copiarTexto(txt, boton, etiqueta) {
+  const fin = () => {
+    const antes = boton.textContent;
+    boton.textContent = etiqueta;
+    boton.classList.add('hecho');
+    setTimeout(() => { boton.textContent = antes; boton.classList.remove('hecho'); }, 1400);
+  };
+  if (navigator.clipboard && window.isSecureContext) {
+    navigator.clipboard.writeText(txt).then(fin, () => respaldo(txt, fin));
+  } else { respaldo(txt, fin); }
+}
+function respaldo(txt, fin) {
+  const ta = document.createElement('textarea');
+  ta.value = txt; ta.style.position = 'fixed'; ta.style.opacity = '0';
+  document.body.appendChild(ta); ta.select();
+  try { document.execCommand('copy'); fin(); } catch (e) { /* sin portapapeles */ }
+  document.body.removeChild(ta);
+}
+
+qa('.copiar').forEach(b => b.addEventListener('click', ev => {
+  ev.stopPropagation();
+  copiarTexto(b.closest('.entry').dataset.apa, b, 'copiada');
+}));
+
+q('#copiar-lista').addEventListener('click', () => {
+  const lista = entradas.filter(e => !e.classList.contains('oculto'))
+    .map(e => e.dataset.apa)
+    .sort((a, b) => a.localeCompare(b, 'es'));
+  copiarTexto(lista.join('\n\n'), q('#copiar-lista'),
+              lista.length + ' copiadas');
+});
+
+const chips = qa('.chip');
+chips.forEach(c => c.addEventListener('click', () => {
+  const s = document.getElementById(c.dataset.ir);
+  if (s) {
+    s.classList.remove('plegada');
+    q('.section-header', s).setAttribute('aria-expanded', 'true');
+    s.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
+}));
+
+qa('.tarjeta').forEach(t => t.addEventListener('click', ev => {
+  ev.preventDefault();
+  const s = document.getElementById(t.getAttribute('href').slice(1));
+  s.classList.remove('plegada');
+  q('.section-header', s).setAttribute('aria-expanded', 'true');
+  s.scrollIntoView({ behavior: 'smooth', block: 'start' });
+}));
+
+if ('IntersectionObserver' in window) {
+  const obs = new IntersectionObserver(ent => {
+    ent.forEach(e => {
+      if (e.isIntersecting) {
+        chips.forEach(c => c.classList.toggle('on', c.dataset.ir === e.target.id));
+      }
+    });
+  }, { rootMargin: '-60px 0px -75% 0px', threshold: 0 });
+  secciones.forEach(s => obs.observe(s));
+}
+
+filtrar();
+</script>
+</body>
+</html>
